@@ -1,248 +1,190 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GOAOXOR - Cross-border Creative Platform</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GOAOXOR - Cross-border Creative Platform</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- ====== 导航栏 ====== -->
-    <header>
-        <div class="container nav-container">
-            <div class="logo">GOAOXOR</div>
-            <nav>
-                <ul class="nav-menu">
-                    <li><a href="#home" data-i18n="nav.home">主页</a></li>
-                    <li><a href="#teams" data-i18n="nav.teams">团队浏览</a></li>
-                    <li><a href="#services" data-i18n="nav.services">热门服务</a></li>
-                    <li><a href="#submit" data-i18n="nav.submit">提交项目</a></li>
-                    <li><a href="#process" data-i18n="nav.process">项目流程</a></li>
-                    <li><a href="#reviews" data-i18n="nav.reviews">客户评价</a></li>
-                    <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
-                </ul>
-            </nav>
-            <div class="nav-actions">
-                <select id="language-switch">
-                    <option value="zh" selected>中文</option>
-                    <option value="en">EN</option>
-                </select>
-                <button class="login-btn">登录</button>
-                <button class="signup-btn">注册</button>
+
+<!-- ====== 导航栏 ====== -->
+<header>
+    <div class="container nav-container">
+        <div class="logo">GOAOXOR</div>
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="#home" data-i18n="nav.home">主页</a></li>
+                <li><a href="#teams" data-i18n="nav.teams">团队浏览</a></li>
+                <li><a href="#services" data-i18n="nav.services">热门服务</a></li>
+                <li><a href="#submit" data-i18n="nav.submit">提交项目</a></li>
+                <li><a href="#process" data-i18n="nav.process">项目流程</a></li>
+                <li><a href="#reviews" data-i18n="nav.reviews">客户评价</a></li>
+                <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
+            </ul>
+        </nav>
+        <div class="nav-actions">
+            <select id="language-switch">
+                <option value="zh" selected>中文</option>
+                <option value="en">EN</option>
+            </select>
+            <button class="login-btn">登录</button>
+            <button class="signup-btn">注册</button>
+        </div>
+    </div>
+</header>
+
+<!-- ====== Hero 模块（置中大卡片） ====== -->
+<section id="home" class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-card container">
+        <div class="hero-content">
+            <h1>Find the Most Reliable Team at 20%-50% Lower Cost Than Global Rates</h1>
+            <p>Our proven matching process connects you with elite creative professionals to scale your projects while you focus on what matters most.</p>
+            <button class="cta-btn">Start in 1 Minute</button>
+        </div>
+        <div class="hero-stats">
+            <div class="stat-card">
+                <h2>500+</h2>
+                <p>Projects Delivered</p>
+            </div>
+            <div class="stat-card">
+                <h2>120+</h2>
+                <p>Certified Teams</p>
+            </div>
+            <div class="stat-card">
+                <h2>$500k+</h2>
+                <p>Client Savings</p>
             </div>
         </div>
-    </header>
+    </div>
+</section>
 
-    <!-- ====== Hero 模块（全屏大封面） ====== -->
-    <section id="home" class="hero">
-        <div class="hero-content container">
-            <div class="hero-left">
-                <h1>Find the Most Reliable Team at 20%-50% Lower Cost Than Global Rates</h1>
-                <p>Our proven matching process connects you with elite creative professionals to scale your projects while you focus on what matters most.</p>
-                <ul>
-                    <li>Pay only for successful matches - no upfront fees</li>
-                    <li>Done-for-you team matching that actually works</li>
-                    <li>Full project guarantee with supervision</li>
-                    <li>Start in 1 Minute</li>
-                </ul>
-                <button class="cta-btn">Start in 1 Minute</button>
-            </div>
+<!-- ====== 团队浏览模块 ====== -->
+<section id="teams" class="marketplace container">
+    <h2>团队浏览</h2>
+    <div class="category-cards">
+        <div class="category-card" onclick="openCategory('video')">
+            <img src="https://via.placeholder.com/80" alt="视频制作">
+            <h3>视频制作</h3>
         </div>
-    </section>
+        <div class="category-card" onclick="openCategory('design')">
+            <img src="https://via.placeholder.com/80" alt="UI设计">
+            <h3>UI设计</h3>
+        </div>
+        <div class="category-card" onclick="openCategory('copywriting')">
+            <img src="https://via.placeholder.com/80" alt="文案撰写">
+            <h3>文案撰写</h3>
+        </div>
+        <div class="category-card" onclick="openCategory('animation')">
+            <img src="https://via.placeholder.com/80" alt="动画制作">
+            <h3>动画制作</h3>
+        </div>
+    </div>
+</section>
 
-    <!-- ====== 团队浏览模块 ====== -->
-    <section id="teams" class="marketplace container">
-        <h2>团队浏览</h2>
-        <div class="category-cards">
-            <div class="category-card" onclick="openCategory('video')">
-                <img src="https://via.placeholder.com/80" alt="视频制作">
+<!-- ====== 热门服务轮播 ====== -->
+<section id="services" class="services-carousel container">
+    <h2>热门服务</h2>
+    <div class="carousel-container">
+        <div class="carousel-track" id="carousel-track">
+            <div class="carousel-card">
                 <h3>视频制作</h3>
+                <img src="https://via.placeholder.com/150" alt="案例缩略图">
+                <p>已完成项目: 120</p>
+                <p>平均评分: ⭐4.7</p>
             </div>
-            <div class="category-card" onclick="openCategory('design')">
-                <img src="https://via.placeholder.com/80" alt="UI设计">
+            <div class="carousel-card">
                 <h3>UI设计</h3>
+                <img src="https://via.placeholder.com/150" alt="案例缩略图">
+                <p>已完成项目: 95</p>
+                <p>平均评分: ⭐4.9</p>
             </div>
-            <div class="category-card" onclick="openCategory('copywriting')">
-                <img src="https://via.placeholder.com/80" alt="文案撰写">
+            <div class="carousel-card">
                 <h3>文案撰写</h3>
-            </div>
-            <div class="category-card" onclick="openCategory('animation')">
-                <img src="https://via.placeholder.com/80" alt="动画制作">
-                <h3>动画制作</h3>
+                <img src="https://via.placeholder.com/150" alt="案例缩略图">
+                <p>已完成项目: 150</p>
+                <p>平均评分: ⭐4.6</p>
             </div>
         </div>
-    </section>
+    </div>
+    <button class="carousel-btn prev" onclick="prevSlide()">‹</button>
+    <button class="carousel-btn next" onclick="nextSlide()">›</button>
+</section>
 
-    <!-- ====== 热门服务轮播 ====== -->
-    <section id="services" class="services-carousel container">
-        <h2>热门服务</h2>
-        <div class="carousel-container">
-            <div class="carousel-track" id="carousel-track">
-                <div class="carousel-card">
-                    <h3>视频制作</h3>
-                    <img src="https://via.placeholder.com/150" alt="案例缩略图">
-                    <p>已完成项目: 120</p>
-                    <p>平均评分: ⭐4.7</p>
-                </div>
-                <div class="carousel-card">
-                    <h3>UI设计</h3>
-                    <img src="https://via.placeholder.com/150" alt="案例缩略图">
-                    <p>已完成项目: 95</p>
-                    <p>平均评分: ⭐4.9</p>
-                </div>
-                <div class="carousel-card">
-                    <h3>文案撰写</h3>
-                    <img src="https://via.placeholder.com/150" alt="案例缩略图">
-                    <p>已完成项目: 150</p>
-                    <p>平均评分: ⭐4.6</p>
-                </div>
-            </div>
+<!-- ====== 提交项目模块 ====== -->
+<section id="submit" class="submit-project container">
+    <div class="submit-card">
+        <div class="submit-left">
+            <h2>Start Your Project Today!</h2>
+            <p>Connect with elite Chinese creative teams for your film, animation, or video project. Pay only for successful matches!</p>
+            <button class="cta-btn">立即匹配</button>
         </div>
-        <button class="carousel-btn prev" onclick="prevSlide()">‹</button>
-        <button class="carousel-btn next" onclick="nextSlide()">›</button>
-    </section>
+        <div class="submit-right">
+            <img src="https://via.placeholder.com/400x300" alt="项目提交">
+        </div>
+    </div>
+</section>
 
-    <!-- ====== 提交项目模块（左文字+右图片大卡片） ====== -->
-    <section id="submit" class="submit-project container">
-        <div class="submit-card">
-            <div class="submit-left">
-                <h2>Start Your Project Today!</h2>
-                <p>Connect with elite Chinese creative teams for your film, animation, or video project. Pay only for successful matches!</p>
-                <button class="cta-btn">立即匹配</button>
-            </div>
-            <div class="submit-right">
-                <img src="https://via.placeholder.com/400x300" alt="项目提交">
-            </div>
-        </div>
-    </section>
+<!-- ====== 视频模块 ====== -->
+<section id="video" class="video-section container">
+    <h2>了解 GOAOXOR</h2>
+    <div class="video-wrapper">
+        <iframe width="800" height="450" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+    </div>
+</section>
 
-    <!-- ====== 视频模块：了解GOAOXOR ====== -->
-    <section id="video" class="video-section container">
-        <h2>了解 GOAOXOR</h2>
-        <div class="video-wrapper">
-            <iframe width="800" height="450" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
-        </div>
-    </section>
+<!-- ====== 项目流程模块 ====== -->
+<section id="process" class="process container">
+    <h2>项目流程</h2>
+    <div class="process-cards">
+        <div class="process-card"><div class="icon">📥</div><h3>客户提交需求</h3><p>填写项目详细信息</p></div>
+        <div class="process-card"><div class="icon">🔍</div><h3>平台筛选团队</h3><p>根据需求匹配团队</p></div>
+        <div class="process-card"><div class="icon">✅</div><h3>客户确认团队</h3><p>客户选择团队</p></div>
+        <div class="process-card"><div class="icon">📝</div><h3>生成合同</h3><p>平台生成合同并监督</p></div>
+        <div class="process-card"><div class="icon">💰</div><h3>直接结算</h3><p>客户与团队完成付款</p></div>
+    </div>
+</section>
 
-    <!-- ====== 项目流程模块 ====== -->
-    <section id="process" class="process container">
-        <h2>项目流程</h2>
-        <div class="process-cards">
-            <div class="process-card">
-                <div class="icon">📥</div>
-                <h3>客户提交需求</h3>
-                <p>客户填写项目详细信息</p>
-            </div>
-            <div class="process-card">
-                <div class="icon">🔍</div>
-                <h3>平台筛选团队</h3>
-                <p>根据需求匹配合适团队</p>
-            </div>
-            <div class="process-card">
-                <div class="icon">✅</div>
-                <h3>客户确认团队</h3>
-                <p>客户选择合适团队</p>
-            </div>
-            <div class="process-card">
-                <div class="icon">📝</div>
-                <h3>生成项目合同</h3>
-                <p>平台生成合同并监督执行</p>
-            </div>
-            <div class="process-card">
-                <div class="icon">💰</div>
-                <h3>直接结算</h3>
-                <p>客户与团队直接完成付款</p>
-            </div>
-        </div>
-    </section>
+<!-- ====== 我们的优势模块 ====== -->
+<section id="advantages" class="advantages container">
+    <h2>我们的优势</h2>
+    <div class="advantages-cards">
+        <div class="adv-card"><div class="icon">⚡</div><h3>快速匹配</h3><p>精准推荐最适合团队</p></div>
+        <div class="adv-card"><div class="icon">🎯</div><h3>高成功率</h3><p>仅为成功匹配付费</p></div>
+        <div class="adv-card"><div class="icon">💎</div><h3>优质团队</h3><p>认证团队，专业可靠</p></div>
+    </div>
+</section>
 
-    <!-- ====== 我们的优势模块 ====== -->
-    <section id="advantages" class="advantages container">
-        <h2>我们的优势</h2>
-        <div class="advantages-cards">
-            <div class="adv-card">
-                <div class="icon">⚡</div>
-                <h3>快速匹配</h3>
-                <p>精准推荐最适合的团队，节省时间</p>
-            </div>
-            <div class="adv-card">
-                <div class="icon">🎯</div>
-                <h3>高成功率</h3>
-                <p>仅为成功匹配付费，保障项目成功</p>
-            </div>
-            <div class="adv-card">
-                <div class="icon">💎</div>
-                <h3>优质团队</h3>
-                <p>认证团队，专业可靠</p>
-            </div>
-        </div>
-    </section>
+<!-- ====== FAQ ====== -->
+<section id="faq" class="faq container">
+    <h2>FAQ</h2>
+    <div class="faq-item"><button class="faq-question">匹配流程如何运作？</button><div class="faq-answer">客户提交需求 → 平台筛选 → 推荐 → 客户确认 → 合同生成。</div></div>
+    <div class="faq-item"><button class="faq-question">支付方式有哪些？</button><div class="faq-answer">支持 PayPal、信用卡、银行转账等方式。</div></div>
+</section>
 
-    <!-- ====== FAQ模块 ====== -->
-    <section id="faq" class="faq container">
-        <h2>FAQ</h2>
-        <div class="faq-item">
-            <button class="faq-question">匹配流程如何运作？</button>
-            <div class="faq-answer">客户提交需求 → 平台筛选团队 → 推荐给客户 → 客户确认 → 合同生成。</div>
-        </div>
-        <div class="faq-item">
-            <button class="faq-question">支付方式有哪些？</button>
-            <div class="faq-answer">支持 PayPal、信用卡、银行转账等方式。</div>
-        </div>
-    </section>
+<!-- ====== 评论模块 ====== -->
+<section id="reviews" class="reviews container">
+    <h2>客户评价</h2>
+    <div class="reviews-cards">
+        <div class="review-card"><p>“团队非常专业，交付快速！”</p><span>客户：Alice</span></div>
+        <div class="review-card"><p>“项目结果超出预期，非常满意。”</p><span>客户：Bob</span></div>
+        <div class="review-card"><p>“沟通顺畅，推荐！”</p><span>客户：Charlie</span></div>
+    </div>
+</section>
 
-    <!-- ====== 评论模块 ====== -->
-    <section id="reviews" class="reviews container">
-        <h2>客户评价</h2>
-        <div class="reviews-cards">
-            <div class="review-card">
-                <p>“团队非常专业，交付快速！”</p>
-                <span>客户：Alice</span>
-            </div>
-            <div class="review-card">
-                <p>“项目结果超出预期，非常满意。”</p>
-                <span>客户：Bob</span>
-            </div>
-            <div class="review-card">
-                <p>“沟通顺畅，推荐！”</p>
-                <span>客户：Charlie</span>
-            </div>
-        </div>
-    </section>
+<!-- ====== 页脚 ====== -->
+<footer>
+    <div class="footer-icons">
+        <a href="mailto:info@goaoxor.com" title="Email"><img src="https://img.icons8.com/ios-glyphs/30/ffffff/new-post.png"/></a>
+        <a href="https://www.tiktok.com/@emmamanlay" target="_blank" title="TikTok"><img src="https://img.icons8.com/ios-glyphs/30/ffffff/tiktok.png"/></a>
+        <a href="https://www.instagram.com/goaoxor_global_network/" target="_blank" title="Instagram"><img src="https://img.icons8.com/ios-glyphs/30/ffffff/instagram-new.png"/></a>
+    </div>
+    <div class="footer-copyright">
+        © 2025 GOAOXOR. All Rights Reserved.
+    </div>
+</footer>
 
-    <!-- ====== 页脚 ====== -->
-    <footer>
-        <div class="footer-container container">
-            <div class="footer-section">
-                <h4>About GOAOXOR</h4>
-                <p>GOAOXOR connects global clients with elite Chinese creative teams for film, animation, and video projects, delivering quality at 20%-50% lower costs.</p>
-            </div>
-            <div class="footer-section">
-                <h4>Explore</h4>
-                <ul>
-                    <li><a href="#home">主页</a></li>
-                    <li><a href="#teams">团队浏览</a></li>
-                    <li><a href="#services">热门服务</a></li>
-                    <li><a href="#submit">提交项目</a></li>
-                    <li><a href="#process">项目流程</a></li>
-                    <li><a href="#reviews">客户评价</a></li>
-                    <li><a href="#faq">FAQ</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Connect With Us</h4>
-                <p>Email: info@goaoxor.com</p>
-                <p>TikTok: @emmamanlay</p>
-                <p>Instagram: @Goaoxor Global Network</p>
-            </div>
-            <div class="footer-section">
-                <h4>Stay Updated</h4>
-                <p>Subscribe to our newsletter for the latest creative insights.</p>
-                <button class="cta-btn">Join Now</button>
-            </div>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
