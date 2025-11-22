@@ -1,0 +1,371 @@
+/* ========== 基础样式 ========== */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", sans-serif;
+    scroll-behavior: smooth;
+    background: #f9f9f9;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ====== 导航栏 ====== */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: white;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    z-index: 100;
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 24px;
+    color: #4B6CF7;
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-menu li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.login-btn, .signup-btn, .cta-btn {
+    background: #4B6CF7;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+/* ====== Hero 模块 ====== */
+.hero {
+    display: flex;
+    align-items: center;
+    min-height: 90vh;
+    background: linear-gradient(135deg, #4B6CF7, #7F5AF0);
+    color: white;
+    padding-top: 60px;
+}
+
+.hero-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.hero-left {
+    max-width: 600px;
+    text-align: left;
+}
+
+.hero-left h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.hero-left p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.hero-left ul {
+    list-style: disc;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+/* ====== 团队浏览模块 ====== */
+.marketplace {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.category-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.category-card {
+    background: white;
+    width: 180px;
+    height: 180px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.category-card img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 10px;
+}
+
+.category-card h3 {
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+.category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+/* ====== 热门服务轮播 ====== */
+.services-carousel {
+    padding: 60px 20px;
+}
+
+.carousel-container {
+    overflow: hidden;
+    position: relative;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 20px;
+    transition: transform 0.5s ease;
+}
+
+.carousel-card {
+    min-width: 200px;
+    background: white;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: rgba(0,0,0,0.3);
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+/* ====== 提交项目模块（大卡片） ====== */
+.submit-project {
+    padding: 80px 20px;
+}
+
+.submit-card {
+    display: flex;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    overflow: hidden;
+    align-items: center;
+}
+
+.submit-left {
+    flex: 1;
+    padding: 40px;
+    text-align: left;
+}
+
+.submit-left h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.submit-left p {
+    margin-bottom: 20px;
+}
+
+.submit-right {
+    flex: 1;
+}
+
+.submit-right img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ====== 视频模块 ====== */
+.video-section {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.video-wrapper iframe {
+    max-width: 100%;
+    border-radius: 12px;
+}
+
+/* ====== 项目流程模块 ====== */
+.process {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.process-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.process-card {
+    background: white;
+    border-radius: 12px;
+    width: 220px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.process-card .icon {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+/* ====== 优势模块 ====== */
+.advantages {
+    padding: 80px 20px;
+    text-align: center;
+    background: #f4f4f4;
+}
+
+.advantages-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.adv-card {
+    background: white;
+    border-radius: 12px;
+    width: 220px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.adv-card .icon {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+/* ====== FAQ模块 ====== */
+.faq {
+    padding: 80px 20px;
+}
+
+.faq-item {
+    margin-bottom: 10px;
+}
+
+.faq-question {
+    width: 100%;
+    text-align: left;
+    background: #E2E8F0;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.faq-answer {
+    display: none;
+    padding: 10px;
+    border-left: 3px solid #4B6CF7;
+    margin-top: 5px;
+}
+
+/* ====== 评论模块 ====== */
+.reviews {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.reviews-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.review-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: left;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* ====== 页脚 ====== */
+footer {
+    background: #333;
+    color: white;
+    padding: 40px 20px;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.footer-section h4 {
+    margin-bottom: 10px;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li a {
+    color: white;
+    text-decoration: none;
+}
