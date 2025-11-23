@@ -62,7 +62,8 @@ document.addEventListener('DOMContentLoaded', () => {
             'footer-connect': 'Connect With Us',
             'footer-update': 'Stay Updated',
             'newsletter-placeholder': 'Email',
-            'footer-join': 'Join Now'
+            'footer-join': 'Join Now',
+            'newsletter-text': 'Subscribe to our newsletter for the latest creative insights.'
         },
         zh: {
             home: '首页',
@@ -124,17 +125,21 @@ document.addEventListener('DOMContentLoaded', () => {
             'footer-connect': '与我们联系',
             'footer-update': '保持更新',
             'newsletter-placeholder': '电子邮件',
-            'footer-join': '立即加入'
+            'footer-join': '立即加入',
+            'newsletter-text': '订阅我们的新闻通讯，获取最新的创意洞见。'
         }
     };
 
     let currentLang = 'en';
 
     function switchLanguage(lang) {
+        if (currentLang === lang) return; // Prevent unnecessary switches
         currentLang = lang;
         document.querySelectorAll('[data-i18n]').forEach(el => {
             const key = el.getAttribute('data-i18n');
-            if (languages[lang][key]) el.textContent = languages[lang][key];
+            if (languages[lang][key]) {
+                el.innerHTML = languages[lang][key]; // Use innerHTML to preserve any HTML tags if needed
+            }
         });
         document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
             const key = el.getAttribute('data-i18n-placeholder');
@@ -143,6 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.lang').forEach(el => {
             el.classList.toggle('active', el.getAttribute('data-lang') === lang);
         });
+        document.documentElement.lang = lang === 'zh' ? 'zh' : 'en';
     }
 
     document.querySelectorAll('.lang').forEach(el => {
@@ -157,26 +163,30 @@ document.addEventListener('DOMContentLoaded', () => {
     const next = document.querySelector('.next');
     let index = 0;
     const cards = document.querySelectorAll('.service-card');
-    const cardWidth = cards[0].offsetWidth + 20; // Including margin
+    const cardWidth = cards[0] ? cards[0].offsetWidth + 20 : 0; // Including margin, check existence
 
-    next.addEventListener('click', () => {
-        index = (index + 1) % cards.length;
-        carouselInner.style.transform = `translateX(-${index * cardWidth}px)`;
-    });
+    if (next && prev && cards.length > 0) {
+        next.addEventListener('click', () => {
+            index = (index + 1) % cards.length;
+            carouselInner.style.transform = `translateX(-${index * cardWidth}px)`;
+        });
 
-    prev.addEventListener('click', () => {
-        index = (index - 1 + cards.length) % cards.length;
-        carouselInner.style.transform = `translateX(-${index * cardWidth}px)`;
-    });
+        prev.addEventListener('click', () => {
+            index = (index - 1 + cards.length) % cards.length;
+            carouselInner.style.transform = `translateX(-${index * cardWidth}px)`;
+        });
 
-    // Auto scroll
-    setInterval(() => next.click(), 5000);
+        // Auto scroll
+        setInterval(() => next.click(), 5000);
+    }
 
     // FAQ Accordion
     document.querySelectorAll('.accordion-header').forEach(header => {
         header.addEventListener('click', () => {
             const content = header.nextElementSibling;
-            content.style.display = content.style.display === 'block' ? 'none' : 'block';
+            const isOpen = content.style.display === 'block';
+            content.style.display = isOpen ? 'none' : 'block';
+            // Optional: Close others if needed, but for now, independent
         });
     });
 
