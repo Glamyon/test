@@ -1,6 +1,14 @@
 /* ==============================
    1. 全局样式
 ============================== */
+:root {
+  --primary-color: #6fda44;
+  --secondary-color: #0072ff;
+  --text-color: #222;
+  --bg-color: #fefefe;
+  --font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -8,10 +16,10 @@
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: var(--font-family);
   line-height: 1.6;
-  color: #222;
-  background-color: #fefefe;
+  color: var(--text-color);
+  background-color: var(--bg-color);
 }
 
 a {
@@ -23,19 +31,10 @@ ul {
   list-style: none;
 }
 
-.container {
-  width: 90%;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-h1,h2,h3,h4,h5,h6 {
-  font-weight: 600;
-}
-
 button {
   cursor: pointer;
   border: none;
+  outline: none;
   background: none;
 }
 
@@ -56,6 +55,8 @@ button {
   justify-content: space-between;
   align-items: center;
   padding: 10px 0;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .logo img {
@@ -79,7 +80,7 @@ button {
 }
 
 .nav-list li a:hover {
-  color: #0070f3;
+  color: var(--primary-color);
 }
 
 .header-actions {
@@ -89,30 +90,36 @@ button {
 }
 
 .lang-btn {
-  padding: 5px 10px;
-  border: 1px solid #0070f3;
+  padding: 5px 12px;
+  border: 1px solid var(--primary-color);
   border-radius: 5px;
-  color: #0070f3;
+  color: var(--primary-color);
   background-color: white;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.lang-btn:hover {
+  background-color: var(--primary-color);
+  color: white;
 }
 
 .btn-primary {
-  background-color: #0070f3;
+  background-color: var(--primary-color);
   color: white;
-  padding: 8px 16px;
-  border-radius: 5px;
+  padding: 10px 20px;
+  border-radius: 6px;
   font-weight: 600;
   transition: all 0.3s;
 }
 
 .btn-primary:hover {
-  background-color: #005bb5;
+  background-color: #57b436;
 }
 
-/* 移动端菜单 */
 .mobile-toggle {
   display: none;
-  font-size: 24px;
+  font-size: 28px;
 }
 
 .mobile-menu {
@@ -123,7 +130,7 @@ button {
 }
 
 .mobile-menu ul li {
-  padding: 10px 20px;
+  padding: 12px 20px;
 }
 
 .mobile-menu.hidden {
@@ -164,15 +171,16 @@ button {
 .hero-left {
   flex: 1;
   max-width: 600px;
+  animation: fadeInLeft 1s ease-out;
 }
 
 .hero-left h1 {
-  font-size: 2.5rem;
+  font-size: 2.8rem;
   margin-bottom: 20px;
 }
 
 .hero-left p {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   margin-bottom: 20px;
 }
 
@@ -181,7 +189,7 @@ button {
 }
 
 .hero-features li {
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .hero-actions .btn-primary {
@@ -201,6 +209,7 @@ button {
   border-radius: 10px;
   flex: 1 1 150px;
   text-align: center;
+  animation: fadeInUp 1s ease-out;
 }
 
 .stat-card strong {
@@ -234,12 +243,13 @@ button {
   padding: 20px;
   border-radius: 10px;
   background-color: white;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  transition: transform 0.3s;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .team-card:hover {
   transform: translateY(-5px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
 }
 
 .team-card img {
@@ -267,9 +277,15 @@ button {
   min-width: 200px;
   background: white;
   border-radius: 10px;
-  padding: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  padding: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
   flex-shrink: 0;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
 }
 
 .service-card img {
@@ -295,11 +311,13 @@ button {
 .submit-left {
   flex: 1;
   min-width: 300px;
+  animation: fadeInLeft 1s ease-out;
 }
 
 .submit-right {
   flex: 1;
   min-width: 300px;
+  animation: fadeInRight 1s ease-out;
 }
 
 .submit-right img {
@@ -316,232 +334,44 @@ button {
 
 .adv-card {
   flex: 1 1 100px;
-  background-color: #0070f3;
+  background-color: var(--primary-color);
   color: white;
-  padding: 10px;
+  padding: 12px;
   border-radius: 8px;
   text-align: center;
   font-weight: 600;
 }
 
 /* ==============================
-   7. 视频模块
+   7. Hero & 卡片动画
 ============================== */
-.video-section {
-  padding: 80px 0;
-  text-align: center;
+@keyframes fadeInLeft {
+  from {opacity: 0; transform: translateX(-50px);}
+  to {opacity:1; transform: translateX(0);}
 }
 
-.video-wrapper iframe {
-  width: 100%;
-  max-width: 800px;
-  height: 450px;
-  border-radius: 10px;
+@keyframes fadeInRight {
+  from {opacity: 0; transform: translateX(50px);}
+  to {opacity:1; transform: translateX(0);}
+}
+
+@keyframes fadeInUp {
+  from {opacity:0; transform: translateY(30px);}
+  to {opacity:1; transform: translateY(0);}
 }
 
 /* ==============================
-   8. 工作流程模块
-============================== */
-.workflow-section {
-  padding: 80px 0;
-  text-align: center;
-}
-
-.workflow-cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  margin-top: 40px;
-}
-
-.workflow-card {
-  flex: 1 1 150px;
-  max-width: 200px;
-  background: white;
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  text-align: center;
-}
-
-.workflow-card .icon {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 10px;
-}
-
-/* ==============================
-   9. 优势模块
-============================== */
-.advantages-section {
-  padding: 80px 0;
-  text-align: center;
-}
-
-.adv-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-}
-
-.adv-grid .adv-card {
-  flex: 1 1 150px;
-  max-width: 200px;
-  background-color: #00c6ff;
-  color: white;
-  padding: 20px;
-  border-radius: 10px;
-  font-weight: 600;
-}
-
-/* ==============================
-   10. 客户评价模块
-============================== */
-.testimonials-section {
-  padding: 80px 0;
-  text-align: center;
-}
-
-.testimonial-cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  margin-top: 40px;
-}
-
-.testimonial-card {
-  background: white;
-  flex: 1 1 250px;
-  max-width: 300px;
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-  text-align: left;
-}
-
-.client-info {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 15px;
-}
-
-.client-info img {
-  border-radius: 50%;
-}
-
-/* ==============================
-   11. FAQ 模块
-============================== */
-.faq-section {
-  padding: 80px 0;
-}
-
-.faq-item {
-  margin-bottom: 15px;
-}
-
-.faq-question {
-  width: 100%;
-  text-align: left;
-  padding: 10px 15px;
-  background-color: #f5f5f5;
-  border-radius: 5px;
-  font-weight: 600;
-}
-
-.faq-answer {
-  padding: 10px 15px;
-  background-color: #fff;
-  border-left: 3px solid #0070f3;
-  margin-top: 5px;
-}
-
-/* ==============================
-   12. 页脚
-============================== */
-.site-footer {
-  background-color: #111;
-  color: white;
-  padding: 60px 0 20px;
-  font-size: 0.9rem;
-}
-
-.footer-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 40px;
-  justify-content: space-between;
-  margin-bottom: 20px;
-}
-
-.footer-col h4, .footer-col h5 {
-  margin-bottom: 15px;
-}
-
-.footer-col p, .footer-col ul, .footer-col form {
-  margin-bottom: 10px;
-}
-
-.footer-col ul li {
-  margin-bottom: 5px;
-}
-
-.footer-col ul li a {
-  color: #ccc;
-  transition: color 0.3s;
-}
-
-.footer-col ul li a:hover {
-  color: #fff;
-}
-
-.socials a img {
-  margin-right: 10px;
-}
-
-.footer-bottom {
-  text-align: center;
-  border-top: 1px solid #333;
-  padding-top: 15px;
-}
-
-/* ==============================
-   13. 响应式布局
+   8. 响应式布局
 ============================== */
 @media screen and (max-width: 1024px) {
-  .hero-inner {
-    flex-direction: column;
-    gap: 30px;
-    text-align: center;
-  }
-  .hero-left {
-    max-width: 100%;
-  }
-  .hero-right {
-    justify-content: center;
-  }
-  .submit-section {
-    flex-direction: column-reverse;
-    gap: 30px;
-  }
+  .hero-inner {flex-direction: column; gap: 30px; text-align: center;}
+  .hero-left, .hero-right {max-width: 100%;}
+  .submit-section {flex-direction: column-reverse; gap: 30px;}
 }
 
 @media screen and (max-width: 768px) {
-  .main-nav {
-    display: none;
-  }
-  .mobile-toggle {
-    display: block;
-  }
-  .services-carousel {
-    gap: 10px;
-  }
-  .workflow-cards, .adv-grid, .testimonial-cards {
-    flex-direction: column;
-    align-items: center;
-  }
+  .main-nav {display: none;}
+  .mobile-toggle {display: block;}
+  .services-carousel {gap: 10px;}
 }
+
