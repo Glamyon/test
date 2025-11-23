@@ -12,10 +12,6 @@ body {
     color: #333;
     background-color: #f9f9f9;
 }
-
-/* ======================
-   容器
-====================== */
 .container {
     width: 90%;
     max-width: 1200px;
@@ -39,6 +35,8 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 15px 0;
+    width: 90%;
+    margin: 0 auto;
 }
 .logo img {
     height: 40px;
@@ -46,6 +44,7 @@ body {
 .nav ul {
     display: flex;
     gap: 20px;
+    list-style: none;
 }
 .nav ul li a {
     text-decoration: none;
@@ -86,67 +85,73 @@ body {
 }
 
 /* ======================
-   Hero 区
+   Hero 区（卡片式）
 ====================== */
 .hero {
     margin-top: 80px;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: linear-gradient(135deg, #00c6ff, #0072ff);
-    color: #fff;
+    justify-content: center;
     padding: 80px 0;
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
     position: relative;
-    overflow: hidden;
 }
-.hero-container {
+.hero-card {
+    background: #fff;
+    border-radius: 20px;
+    width: 1100px;
+    max-width: 90%;
     display: flex;
-    flex-wrap: wrap;
-    gap: 40px;
+    padding: 50px;
+    gap: 50px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
 }
-.hero-text {
-    flex: 1 1 500px;
+.hero-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
-.hero-text h1 {
+.hero-left h1 {
     font-size: 2.5rem;
     margin-bottom: 20px;
-    line-height: 1.2;
 }
-.hero-text p {
-    margin-bottom: 20px;
+.hero-left p {
     font-size: 1.1rem;
+    margin-bottom: 20px;
 }
-.hero-features {
+.hero-left ul {
     list-style: none;
     margin-bottom: 20px;
 }
-.hero-features li::before {
+.hero-left ul li::before {
     content: "✓ ";
-    color: #fff;
-}
-.hero-cta {
-    padding: 12px 25px;
-    border: none;
-    background: #fff;
     color: #0073e6;
     font-weight: bold;
-    border-radius: 6px;
+}
+.hero-left .hero-cta {
+    padding: 12px 25px;
+    border: none;
+    background: #0073e6;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 10px;
     cursor: pointer;
     transition: all 0.3s;
 }
-.hero-cta:hover {
-    background: #0073e6;
-    color: #fff;
+.hero-left .hero-cta:hover {
+    background: #005bb5;
 }
-.hero-stats {
+.hero-right {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 20px;
+    justify-content: center;
 }
 .stat-card {
-    background: rgba(255,255,255,0.1);
+    background: #f0f8ff;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 12px;
     text-align: center;
     transition: transform 0.3s;
 }
@@ -161,18 +166,25 @@ body {
 }
 
 /* ======================
-   经过认证的团队模块
+   模块通用标题居中
 ====================== */
-.teams {
+.section {
     padding: 80px 0;
     text-align: center;
 }
+.section h2 {
+    margin-bottom: 40px;
+    font-size: 2rem;
+}
+
+/* ======================
+   认证团队模块
+====================== */
 .team-categories {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
-    margin-top: 40px;
 }
 .team-card {
     background: #fff;
@@ -196,22 +208,19 @@ body {
 }
 
 /* ======================
-   热门服务模块
+   热门服务轮播
 ====================== */
-.services {
-    padding: 80px 0;
-    text-align: center;
-}
 .services-carousel {
     display: flex;
     overflow-x: auto;
     gap: 20px;
     padding: 20px 0;
+    justify-content: center;
 }
 .service-card {
     min-width: 220px;
     background: #fff;
-    border-radius: 10px;
+    border-radius: 12px;
     padding: 15px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     flex-shrink: 0;
@@ -227,177 +236,108 @@ body {
 }
 
 /* ======================
-   提交项目模块
+   提交项目模块（长方形卡片+遮罩）
 ====================== */
 .submit-project {
-    padding: 80px 0;
-}
-.submit-container {
     display: flex;
-    flex-wrap: wrap;
-    gap: 40px;
-    align-items: center;
     justify-content: center;
 }
-.submit-text {
-    flex: 1 1 400px;
+.submit-card {
+    background: linear-gradient(135deg, rgba(0,115,230,0.85), rgba(0,198,255,0.85));
+    border-radius: 20px;
+    width: 1100px;
+    max-width: 90%;
+    display: flex;
+    gap: 50px;
+    padding: 50px;
+    color: #fff;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
 }
-.submit-text h2 {
+.submit-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.submit-left h2 {
     font-size: 2rem;
     margin-bottom: 20px;
 }
-.submit-text p {
-    margin-bottom: 20px;
+.submit-left p {
+    margin-bottom: 15px;
+    line-height: 1.6;
 }
-.submit-features {
-    display: flex;
-    gap: 15px;
-    margin-top: 20px;
-    flex-wrap: wrap;
-}
-.feature-card {
-    background: #0073e6;
-    color: #fff;
-    padding: 10px 15px;
-    border-radius: 6px;
-}
-
-/* ======================
-   视频模块
-====================== */
-.video-section {
-    padding: 80px 0;
-    text-align: center;
-}
-.video-wrapper {
-    position: relative;
-    width: 80%;
-    max-width: 800px;
-    margin: 0 auto;
-}
-.video-wrapper iframe {
-    width: 100%;
-    height: 450px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-}
-
-/* ======================
-   工作流程模块
-====================== */
-.workflow {
-    padding: 80px 0;
-    text-align: center;
-}
-.workflow-cards {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-    margin-top: 40px;
-}
-.workflow-card {
+.submit-left .btn-submit {
+    padding: 12px 25px;
+    border: none;
     background: #fff;
-    padding: 20px;
+    color: #0073e6;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.submit-left .btn-submit:hover {
+    background: #005bb5;
+    color: #fff;
+}
+.submit-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.submit-right img {
+    max-width: 100%;
     border-radius: 12px;
-    width: 180px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 /* ======================
-   优势模块
+   优势模块（立式长方形卡片）
 ====================== */
-.advantages {
-    padding: 80px 0;
-    text-align: center;
-}
-.advantage-cards {
+.advantages-cards {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
     justify-content: center;
-    margin-top: 40px;
+    gap: 20px;
 }
 .adv-card {
-    background: linear-gradient(135deg, #00c6ff, #0072ff);
-    color: #fff;
-    padding: 20px;
-    border-radius: 12px;
-    width: 180px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    transition: transform 0.3s;
-}
-.adv-card:hover {
-    transform: translateY(-5px);
-}
-
-/* ======================
-   客户评价模块
-====================== */
-.reviews {
-    padding: 80px 0;
-    text-align: center;
-}
-.review-cards {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-.review-card {
     background: #fff;
+    width: 180px;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    padding: 20px;
-    width: 250px;
-}
-.review-card .reviewer {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 15px;
-}
-.review-card .reviewer img {
-    border-radius: 50%;
-}
-
-/* ======================
-   FAQ 模块
-====================== */
-.faq {
-    padding: 80px 0;
+    overflow: hidden;
     text-align: center;
 }
-.faq-item {
-    max-width: 600px;
-    margin: 10px auto;
-    text-align: left;
-    cursor: pointer;
+.adv-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
 }
-.faq-question {
-    font-weight: bold;
-    padding: 10px;
-    background: #f0f0f0;
-    border-radius: 6px;
-}
-.faq-answer {
-    padding: 10px;
-    display: none;
+.adv-card p {
+    padding: 15px;
 }
 
 /* ======================
-   页脚
+   页脚模块（信息栏平行排列）
 ====================== */
 .footer {
     background: #333;
     color: #fff;
     padding: 50px 0 20px;
+    text-align: center;
 }
 .footer-container {
     display: flex;
+    justify-content: center;
+    gap: 50px;
     flex-wrap: wrap;
-    gap: 40px;
-    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.footer-column {
+    flex: 1;
+    min-width: 180px;
 }
 .footer h3 {
     margin-bottom: 15px;
@@ -426,17 +366,24 @@ body {
     color: #fff;
     cursor: pointer;
 }
+.footer-bottom {
+    margin-top: 30px;
+    font-size: 0.9rem;
+}
 
 /* ======================
    响应式布局
 ====================== */
 @media (max-width: 1024px) {
-    .hero-container, .submit-container {
+    .hero-card, .submit-card {
         flex-direction: column;
         text-align: center;
     }
-    .hero-stats, .hero-text {
+    .hero-right, .hero-left, .submit-left, .submit-right {
         width: 100%;
+    }
+    .submit-left h2, .hero-left h1 {
+        font-size: 2rem;
     }
 }
 @media (max-width: 768px) {
@@ -450,5 +397,9 @@ body {
     }
     .services-carousel {
         overflow-x: scroll;
+    }
+    .advantages-cards {
+        flex-direction: column;
+        align-items: center;
     }
 }
