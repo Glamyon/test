@@ -143,5 +143,100 @@ document.addEventListener('click', (e)=>{
     const answer = item.querySelector('.faq-a');
     const expanded = btn.getAttribute('aria-expanded') === 'true';
     // close other items (accordion)
-    document.querySelectorAll('.faq-item .faq-q').forEach(q
+    document.querySelectorAll('.faq-item .faq-q').forEach(q=>{
+      if(q !== btn){
+        q.setAttribute('aria-expanded','false');
+        const a = q.closest('.faq-item').querySelector('.faq-a');
+        if(a) a.hidden = true;
+      }
+    });
+    btn.setAttribute('aria-expanded', String(!expanded));
+    if(answer) answer.hidden = expanded;
+  }
+});
 
+/* ---------- Carousel (services) ---------- */
+const svcTrack = document.getElementById('svcTrack');
+const svcPrev = document.getElementById('svcPrev');
+const svcNext = document.getElementById('svcNext');
+let svcAutoTimer = null;
+
+function svcScrollBy(delta){
+  if(!svcTrack) return;
+  svcTrack.scrollBy({left: delta, behavior:'smooth'});
+}
+
+if(svcPrev) svcPrev.addEventListener('click', ()=>{ svcScrollBy(-300); resetSvcAuto(); });
+if(svcNext) svcNext.addEventListener('click', ()=>{ svcScrollBy(300); resetSvcAuto(); });
+
+function startSvcAuto(){
+  stopSvcAuto();
+  svcAutoTimer = setInterval(()=>{
+    if(!svcTrack) return;
+    const max = svcTrack.scrollWidth - svcTrack.clientWidth;
+    const nextPos = Math.min(svcTrack.scrollLeft + 320, max);
+    if(svcTrack.scrollLeft >= max - 10) svcTrack.scrollTo({left:0, behavior:'smooth'});
+    else svcTrack.scrollTo({left: nextPos, behavior:'smooth'});
+  }, 3500);
+}
+function stopSvcAuto(){ if(svcAutoTimer) clearInterval(svcAutoTimer); svcAutoTimer = null; }
+function resetSvcAuto(){ stopSvcAuto(); startSvcAuto(); }
+
+if(svcTrack) {
+  svcTrack.addEventListener('mouseenter', stopSvcAuto);
+  svcTrack.addEventListener('mouseleave', startSvcAuto);
+  startSvcAuto();
+}
+
+/* ---------- Scroll reveal (fade-in) using IntersectionObserver ---------- */
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+      io.unobserve(entry.target);
+    }
+  });
+},{threshold:0.12});
+
+document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+/* add fade-in class to some key blocks for initial effect */
+document.querySelectorAll('.section').forEach(s => s.classList.add('fade-in'));
+
+/* ---------- Hero parallax (use rAF for performance) ---------- */
+const heroBg = document.getElementById('heroBg');
+let lastScrollY = 0;
+function onScroll(){
+  lastScrollY = window.scrollY;
+}
+window.addEventListener('scroll', onScroll, {passive:true});
+function rafLoop(){
+  if(heroBg){
+    const y = lastScrollY * 0.25;
+    heroBg.style.transform = `translateY(${y}px)`;
+  }
+  requestAnimationFrame(rafLoop);
+}
+requestAnimationFrame(rafLoop);
+
+/* ---------- Newsletter stub (demo) ---------- */
+const newsletterForm = document.getElementById('newsletterForm');
+if(newsletterForm){
+  newsletterForm.addEventListener('submit', (e)=>{
+    e.preventDefault();
+    const email = document.getElementById('newsletterEmail').value.trim();
+    if(!email){ alert(currentLang === 'zh' ? '请输入邮箱' : 'Please enter your email'); return; }
+    // TODO: POST to your backend API
+    alert(currentLang === 'zh' ? '订阅成功（示例）' : 'Subscribed (demo)');
+    newsletterForm.reset();
+  });
+}
+
+/* ---------- Accessibility: keyboard carousel support ---------- */
+if(svcTrack){
+  svcTrack.addEventListener('keydown', (e)=>{
+    if(e.key === 'ArrowRight') svcScrollBy(300);
+    if(e.key === 'ArrowLeft') svcScrollBy(-300);
+  });
+}
+
+/* ---------- End of script ---------- */
