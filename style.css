@@ -88,6 +88,7 @@ h2 { text-align: center; margin-bottom: 40px; }
 .footer-column ul li { margin-bottom: 10px; }
 .footer-column ul li a { color: #fff; text-decoration: none; }
 .icons { display: flex; flex-direction: column; }
+.footer-column p { margin-bottom: 10px; }
 .footer-bottom { text-align: center; margin-top: 20px; }
 
 /* Animations */
