@@ -1,203 +1,181 @@
-// script.js
-document.addEventListener('DOMContentLoaded', () => {
-    // Language Switching
-    const languages = {
-        en: {
-            home: 'Home',
-            'certified-teams': 'Certified Teams',
-            'popular-services': 'Popular Services',
-            'submit-project': 'Submit Project',
-            workflow: 'Workflow',
-            testimonials: 'Client Testimonials',
-            faq: 'FAQ',
-            'hero-title': 'Find the most reliable teams at 20%-50% lower costs than global rates',
-            'hero-paragraph': 'Our verified matching process connects you with top creative professionals, scaling your projects while you focus on what matters most.',
-            'hero-point1': 'Pay only for successful matches - no upfront fees',
-            'hero-point2': 'Team matching done for you, truly effective',
-            'hero-point3': 'Full project supervision guarantee',
-            'hero-cta': 'Start in 1 Minute',
-            stat1: 'Projects Delivered',
-            stat2: 'Certified Teams',
-            stat3: 'Client Savings',
-            team1: 'Film & Video',
-            team2: 'Animation',
-            team3: 'Visual & Design',
-            team4: 'Ecommerce',
-            team5: 'More',
-            service1: 'Video Editing',
-            service2: 'Animation Creation',
-            'submit-title': 'Submit Your Project',
-            'submit-paragraph': 'Leverage GOAOXOR\'s advantages for your creative needs.',
-            'submit-cta': 'Start Now',
-            adv1: 'Fast Team Match',
-            adv2: 'Expert Support',
-            adv3: 'Safe & Verified',
-            'video-title': 'Learn about GOAOXOR',
-            'step1-title': 'Client Submits Project Requirements',
-            'step1-desc': 'Describe your needs and submit.',
-            'step2-title': 'Platform Screens Teams in China',
-            'step2-desc': 'We select the best matches.',
-            'step3-title': 'Recommend Matching Teams to Client',
-            'step3-desc': 'Review and choose.',
-            'step4-title': 'Client Confirms Team',
-            'step4-desc': 'Approve the selection.',
-            'step5-title': 'Platform Generates Project Contract',
-            'step5-desc': 'Secure agreement.',
-            'step6-title': 'Client Settles Directly with Team',
-            'step6-desc': 'Complete payment.',
-            'barriers-title': 'We Eliminate Barriers in Global Creative Collaboration',
-            barrier1: 'Reduce Costs by 20%-50%',
-            barrier2: 'Top Chinese Teams',
-            barrier3: 'International Services',
-            barrier4: 'Strict Review Mechanism',
-            barrier5: 'Project Supervision Guarantee',
-            barrier6: 'Multi-Domain Experts',
-            'testimonial-job1': 'Marketing Director',
-            'testimonial-text1': 'Excellent service and cost savings.',
-            'testimonial-name1': 'John Doe',
-            'faq-q1': 'How does GOAOXOR work?',
-            'faq-a1': 'We match you with certified teams.',
-            'footer-about': 'About GOAOXOR',
-            'footer-explore': 'Explore',
-            'footer-connect': 'Connect With Us',
-            'footer-update': 'Stay Updated',
-            'newsletter-placeholder': 'Email',
-            'footer-join': 'Join Now',
-            'newsletter-text': 'Subscribe to our newsletter for the latest creative insights.'
-        },
-        zh: {
-            home: '首页',
-            'certified-teams': '经过认证的团队',
-            'popular-services': '热门服务',
-            'submit-project': '提交项目',
-            workflow: '工作流程',
-            testimonials: '客户评价',
-            faq: 'FAQ',
-            'hero-title': '以比全球费率低20%-50%的成本找到最可靠的团队',
-            'hero-paragraph': '我们经过验证的匹配流程将您与顶尖创意专业人士联系起来，扩展您的项目，同时让您专注于最重要的事情。',
-            'hero-point1': '仅为成功匹配支付费用 - 无前期费用',
-            'hero-point2': '为您完成的团队匹配，真正有效',
-            'hero-point3': '全程监督的项目保证',
-            'hero-cta': '1分钟开始',
-            stat1: '已交付项目',
-            stat2: '认证团队',
-            stat3: '客户节省',
-            team1: '影视与视频',
-            team2: '动画',
-            team3: '视觉与设计',
-            team4: '电商',
-            team5: '更多',
-            service1: '视频编辑',
-            service2: '动画创作',
-            'submit-title': '提交您的项目',
-            'submit-paragraph': '利用 GOAOXOR 的优势满足您的创意需求。',
-            'submit-cta': '立即开始',
-            adv1: '快速团队匹配',
-            adv2: '专家支持',
-            adv3: '安全且经过验证',
-            'video-title': '了解 GOAOXOR',
-            'step1-title': '客户提交项目需求',
-            'step1-desc': '描述您的需求并提交。',
-            'step2-title': '平台在中国筛选团队',
-            'step2-desc': '我们选择最佳匹配。',
-            'step3-title': '向客户推荐匹配团队',
-            'step3-desc': '审查并选择。',
-            'step4-title': '客户确认团队',
-            'step4-desc': '批准选择。',
-            'step5-title': '平台生成项目合同',
-            'step5-desc': '安全协议。',
-            'step6-title': '客户与团队直接结算',
-            'step6-desc': '完成支付。',
-            'barriers-title': '我们消除全球创意协作的障碍',
-            barrier1: '降低 20%-50% 成本',
-            barrier2: '顶尖中国团队',
-            barrier3: '国际化服务',
-            barrier4: '严格审核机制',
-            barrier5: '项目监督保障',
-            barrier6: '多领域专家',
-            'testimonial-job1': '营销总监',
-            'testimonial-text1': '优秀的服务和成本节省。',
-            'testimonial-name1': '约翰·多伊',
-            'faq-q1': 'GOAOXOR 如何运作？',
-            'faq-a1': '我们将您与认证团队匹配。',
-            'footer-about': '关于 GOAOXOR',
-            'footer-explore': '探索',
-            'footer-connect': '与我们联系',
-            'footer-update': '保持更新',
-            'newsletter-placeholder': '电子邮件',
-            'footer-join': '立即加入',
-            'newsletter-text': '订阅我们的新闻通讯，获取最新的创意洞见。'
-        }
-    };
+/* ==========================
+   1. 国际化语言切换
+========================== */
+const translations = {
+  zh: {
+    "nav.home": "首页",
+    "nav.teams": "经过认证的团队",
+    "nav.services": "热门服务",
+    "nav.submit": "提交项目",
+    "nav.workflow": "工作流程",
+    "nav.reviews": "客户评价",
+    "nav.faq": "FAQ",
+    "cta.start": "1分钟开始",
+    "cta.explore": "查看热门服务",
+    "hero.title": "以比全球费率低20%-50%的成本找到最可靠的团队",
+    "hero.subtitle": "我们经过验证的匹配流程将您与顶尖创意专业人士联系起来，扩展您的项目，同时让您专注于最重要的事情。",
+    "hero.f1": "✓ 仅为成功匹配支付费用 - 无前期费用",
+    "hero.f2": "✓ 为您完成的团队匹配，真正有效",
+    "hero.f3": "✓ 全程监督的项目保证",
+    "stats.projects": "Projects Delivered",
+    "stats.teams": "Certified Teams",
+    "stats.savings": "Client Savings",
+    "teams.title": "经过认证的团队",
+    "teams.film": "影视与视频",
+    "teams.animation": "动画",
+    "teams.design": "视觉与设计",
+    "teams.ecommerce": "电商",
+    "teams.more": "更多",
+    "services.title": "热门服务",
+    "submit.title": "Submit Your Project",
+    "submit.desc": "通过 GOAOXOR 平台快速匹配可靠团队",
+    "submit.fast": "Fast Team Match",
+    "submit.expert": "Expert Support",
+    "submit.safe": "Safe & Verified",
+    "video.title": "了解 GOAOXOR",
+    "workflow.title": "工作流程",
+    "workflow.step1": "客户提交项目需求",
+    "workflow.step2": "平台在中国筛选团队",
+    "workflow.step3": "向客户推荐匹配团队",
+    "workflow.step4": "客户确认团队",
+    "workflow.step5": "平台生成项目合同",
+    "workflow.step6": "客户与团队直接结算",
+    "advantages.title": "我们消除全球创意协作的障碍",
+    "advantages.cost": "降低 20%-50% 成本",
+    "advantages.topteams": "顶尖中国团队",
+    "advantages.international": "国际化服务",
+    "advantages.audit": "严格审核机制",
+    "advantages.supervision": "项目监督保障",
+    "advantages.experts": "多领域专家",
+    "testimonials.title": "全球客户的信赖",
+    "faq.title": "常见问题",
+    "faq.q1": "GOAOXOR 如何匹配团队？",
+    "faq.a1": "我们通过专业审核和智能筛选，为客户匹配最适合的团队。",
+    "faq.q2": "费用如何收取？",
+    "faq.a2": "仅为成功匹配支付费用，无前期费用。"
+  },
+  en: {
+    "nav.home": "Home",
+    "nav.teams": "Certified Teams",
+    "nav.services": "Popular Services",
+    "nav.submit": "Submit Project",
+    "nav.workflow": "Workflow",
+    "nav.reviews": "Testimonials",
+    "nav.faq": "FAQ",
+    "cta.start": "Start Now",
+    "cta.explore": "Explore Services",
+    "hero.title": "Find the most reliable teams at 20%-50% lower cost globally",
+    "hero.subtitle": "Our verified matching process connects you with top creative professionals, expanding your projects while you focus on what matters most.",
+    "hero.f1": "✓ Only pay for successful matches - no upfront fees",
+    "hero.f2": "✓ Team matches are effective and guaranteed",
+    "hero.f3": "✓ Full project supervision",
+    "stats.projects": "Projects Delivered",
+    "stats.teams": "Certified Teams",
+    "stats.savings": "Client Savings",
+    "teams.title": "Certified Teams",
+    "teams.film": "Film & Video",
+    "teams.animation": "Animation",
+    "teams.design": "Visual & Design",
+    "teams.ecommerce": "E-commerce",
+    "teams.more": "More",
+    "services.title": "Popular Services",
+    "submit.title": "Submit Your Project",
+    "submit.desc": "Quickly match reliable teams via GOAOXOR platform",
+    "submit.fast": "Fast Team Match",
+    "submit.expert": "Expert Support",
+    "submit.safe": "Safe & Verified",
+    "video.title": "Learn About GOAOXOR",
+    "workflow.title": "Workflow",
+    "workflow.step1": "Client submits project requirements",
+    "workflow.step2": "Platform screens teams in China",
+    "workflow.step3": "Recommend matched teams to client",
+    "workflow.step4": "Client confirms team",
+    "workflow.step5": "Platform generates contract",
+    "workflow.step6": "Client settles directly with team",
+    "advantages.title": "We Remove Barriers in Global Creative Collaboration",
+    "advantages.cost": "Reduce 20%-50% Costs",
+    "advantages.topteams": "Top Chinese Teams",
+    "advantages.international": "International Service",
+    "advantages.audit": "Strict Verification",
+    "advantages.supervision": "Project Supervision Guaranteed",
+    "advantages.experts": "Multi-field Experts",
+    "testimonials.title": "Trusted by Global Clients",
+    "faq.title": "Frequently Asked Questions",
+    "faq.q1": "How does GOAOXOR match teams?",
+    "faq.a1": "We match clients with the best teams via professional screening and intelligent selection.",
+    "faq.q2": "How are fees charged?",
+    "faq.a2": "You only pay for successful matches, no upfront fees."
+  }
+};
 
-    let currentLang = 'en';
+let currentLang = "zh";
+const langBtn = document.getElementById("langToggle");
 
-    function switchLanguage(lang) {
-        if (currentLang === lang) return; // Prevent unnecessary switches
-        currentLang = lang;
-        document.querySelectorAll('[data-i18n]').forEach(el => {
-            const key = el.getAttribute('data-i18n');
-            if (languages[lang][key]) {
-                el.innerHTML = languages[lang][key]; // Use innerHTML to preserve any HTML tags if needed
-            }
-        });
-        document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-            const key = el.getAttribute('data-i18n-placeholder');
-            if (languages[lang][key]) el.placeholder = languages[lang][key];
-        });
-        document.querySelectorAll('.lang').forEach(el => {
-            el.classList.toggle('active', el.getAttribute('data-lang') === lang);
-        });
-        document.documentElement.lang = lang === 'zh' ? 'zh' : 'en';
-    }
+function switchLanguage(lang) {
+  currentLang = lang;
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    const key = el.getAttribute("data-i18n");
+    if (translations[lang][key]) el.innerText = translations[lang][key];
+  });
+  langBtn.innerText = lang === "zh" ? "EN" : "中文";
+}
 
-    document.querySelectorAll('.lang').forEach(el => {
-        el.addEventListener('click', () => switchLanguage(el.getAttribute('data-lang')));
-    });
-
-    switchLanguage('en'); // Default
-
-    // Carousel
-    const carouselInner = document.querySelector('.carousel-inner');
-    const prev = document.querySelector('.prev');
-    const next = document.querySelector('.next');
-    let index = 0;
-    const cards = document.querySelectorAll('.service-card');
-    const cardWidth = cards[0] ? cards[0].offsetWidth + 20 : 0; // Including margin, check existence
-
-    if (next && prev && cards.length > 0) {
-        next.addEventListener('click', () => {
-            index = (index + 1) % cards.length;
-            carouselInner.style.transform = `translateX(-${index * cardWidth}px)`;
-        });
-
-        prev.addEventListener('click', () => {
-            index = (index - 1 + cards.length) % cards.length;
-            carouselInner.style.transform = `translateX(-${index * cardWidth}px)`;
-        });
-
-        // Auto scroll
-        setInterval(() => next.click(), 5000);
-    }
-
-    // FAQ Accordion
-    document.querySelectorAll('.accordion-header').forEach(header => {
-        header.addEventListener('click', () => {
-            const content = header.nextElementSibling;
-            const isOpen = content.style.display === 'block';
-            content.style.display = isOpen ? 'none' : 'block';
-            // Optional: Close others if needed, but for now, independent
-        });
-    });
-
-    // Animations on Scroll
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('fade-in', 'slide-in');
-            }
-        });
-    });
-
-    document.querySelectorAll('section').forEach(sec => observer.observe(sec));
+langBtn.addEventListener("click", () => {
+  switchLanguage(currentLang === "zh" ? "en" : "zh");
 });
+
+// 初始化
+switchLanguage(currentLang);
+
+/* ==========================
+   2. FAQ 折叠
+========================== */
+document.querySelectorAll(".faq-question").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const answer = btn.nextElementSibling;
+    const expanded = btn.getAttribute("aria-expanded") === "true";
+    btn.setAttribute("aria-expanded", !expanded);
+    answer.hidden = expanded;
+  });
+});
+
+/* ==========================
+   3. Hero 渐入动画
+========================== */
+const heroSection = document.querySelector(".hero-section");
+window.addEventListener("scroll", () => {
+  const scrollY = window.scrollY;
+  heroSection.style.backgroundPositionY = `${scrollY * 0.3}px`;
+});
+
+/* ==========================
+   4. 服务轮播
+========================== */
+const carousel = document.querySelector(".services-carousel");
+let scrollAmount = 0;
+const scrollStep = 220;
+const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+
+function scrollRight() {
+  scrollAmount += scrollStep;
+  if (scrollAmount > maxScroll) scrollAmount = 0;
+  carousel.scrollTo({ left: scrollAmount, behavior: "smooth" });
+}
+function scrollLeft() {
+  scrollAmount -= scrollStep;
+  if (scrollAmount < 0) scrollAmount = maxScroll;
+  carousel.scrollTo({ left: scrollAmount, behavior: "smooth" });
+}
+
+// 自动滚动
+setInterval(scrollRight, 4000);
+
+/* ==========================
+   5. 移动菜单切换
+========================== */
+const mobileBtn = document.getElementById("mobileToggle");
+const mobileMenu = document.getElementById("mobileMenu");
+mobileBtn.addEventListener("click", () => {
+  mobileMenu.classList.toggle("hidden");
+});
+
