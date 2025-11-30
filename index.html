@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh" class="gjs-t-body">
-<head>
+  <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="index,follow">
@@ -16,802 +16,521 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    
-    <!-- 结构化数据 -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "GOAOXOR",
-        "description": "跨境创意制作服务平台",
-        "url": "https://goaoxor.com",
-        "logo": "https://goaoxor.com/logo.png",
-        "sameAs": [],
-        "contactPoint": {
-            "@type": "ContactPoint",
-            "email": "hello@goaoxor.com",
-            "contactType": "customer service"
-        }
-    }
-    </script>
-</head>
-<body class="gjs-t-body body-root">
+  </head>
+
+  <body class="gjs-t-body body-root">
     <!-- 跳过导航链接 - 无障碍优化 -->
     <a href="#main-content" class="skip-link">跳转到主要内容</a>
     
-    <header id="ilh1m" class="header-navbar" role="banner">
-        <div class="navbar-container">
-            <div class="navbar-row">
-                <!-- 品牌标识 -->
-                <a href="#home" class="navbar-logo-link" aria-label="GOAOXOR 首页">
-                    <div class="logo-mark logo-rect" aria-hidden="true">
-                        <img src="https://app.grapesjs.com/api/assets/random-image?query=%22minimal%20rectangle%20logo%22&amp;w=240&amp;h=64" 
-                             alt="GOAOXOR Logo" 
-                             loading="eager" 
-                             width="120" 
-                             height="32"
-                             class="logo-icon">
-                    </div>
-                    <span class="logo-text">GOAOXOR</span>
-                </a>
-
-                <!-- 主导航 -->
-                <nav class="navbar-links nav-accordion" aria-label="主导航">
-                    <div class="nav-acc-group">
-                        <button type="button" 
-                                aria-expanded="false" 
-                                aria-controls="nav-services-panel" 
-                                class="nav-acc-btn">
-                            Services
-                            <img src="https://api.iconify.design/lucide-chevron-down.svg?color=%23334569" 
-                                 alt="" 
-                                 aria-hidden="true" 
-                                 width="16" 
-                                 height="16">
-                        </button>
-                        <div id="nav-services-panel" 
-                             role="menu" 
-                             aria-label="服务子菜单" 
-                             class="nav-submenu">
-                            <a href="#home" role="menuitem" class="gjs-t-link">首页</a>
-                            <a href="#teams" role="menuitem" class="gjs-t-link">经过认证的团队</a>
-                            <a href="#services" role="menuitem" class="gjs-t-link">热门服务</a>
-                        </div>
-                    </div>
-
-                    <div class="nav-acc-group">
-                        <button type="button" 
-                                aria-expanded="false" 
-                                aria-controls="nav-more-panel" 
-                                class="nav-acc-btn">
-                            More
-                            <img src="https://api.iconify.design/lucide-chevron-down.svg?color=%23334569" 
-                                 alt="" 
-                                 aria-hidden="true" 
-                                 width="16" 
-                                 height="16">
-                        </button>
-                        <div id="nav-more-panel" 
-                             role="menu" 
-                             aria-label="更多子菜单" 
-                             class="nav-submenu">
-                            <a href="#submit" role="menuitem" class="gjs-t-link">提交项目</a>
-                            <a href="#workflow" role="menuitem" class="gjs-t-link">工作流程</a>
-                            <a href="#testimonials" role="menuitem" class="gjs-t-link">客户评价</a>
-                            <a href="#faq" role="menuitem" class="gjs-t-link">FAQ</a>
-                        </div>
-                    </div>
-                </nav>
-
-                <!-- 导航操作区域 -->
-                <div class="navbar-actions">
-                    <!-- 语言选择 -->
-                    <div class="lang-group">
-                        <button type="button" 
-                                aria-expanded="false" 
-                                aria-controls="lang-panel" 
-                                id="lang-toggle" 
-                                class="lang-button nav-acc-btn">
-                            English ∨
-                        </button>
-                        <div id="lang-panel" 
-                             role="menu" 
-                             aria-label="语言选项" 
-                             class="lang-panel">
-                            <button type="button" 
-                                    data-lang="en" 
-                                    role="menuitem" 
-                                    class="lang-option">
-                                English
-                                <img src="https://api.iconify.design/lucide-check.svg?color=%23cbd5e1" 
-                                     alt="已选择" 
-                                     aria-hidden="true" 
-                                     width="16" 
-                                     height="16">
-                            </button>
-                            <button type="button" 
-                                    data-lang="zh" 
-                                    role="menuitem" 
-                                    class="lang-option">
-                                中文
-                                <img src="https://api.iconify.design/lucide-check.svg?color=%23cbd5e1" 
-                                     alt="已选择" 
-                                     aria-hidden="true" 
-                                     width="16" 
-                                     height="16">
-                            </button>
-                            <button type="button" 
-                                    data-lang="de" 
-                                    role="menuitem" 
-                                    class="lang-option">
-                                Deutsch
-                                <img src="https://api.iconify.design/lucide-check.svg?color=%23cbd5e1" 
-                                     alt="已选择" 
-                                     aria-hidden="true" 
-                                     width="16" 
-                                     height="16">
-                            </button>
-                            <button type="button" 
-                                    data-lang="fr" 
-                                    role="menuitem" 
-                                    class="lang-option">
-                                Français
-                                <img src="https://api.iconify.design/lucide-check.svg?color=%23cbd5e1" 
-                                     alt="已选择" 
-                                     aria-hidden="true" 
-                                     width="16" 
-                                     height="16">
-                            </button>
-                            <button type="button" 
-                                    data-lang="es" 
-                                    role="menuitem" 
-                                    class="lang-option">
-                                Español
-                                <img src="https://api.iconify.design/lucide-check.svg?color=%23cbd5e1" 
-                                     alt="已选择" 
-                                     aria-hidden="true" 
-                                     width="16" 
-                                     height="16">
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- 认证按钮 -->
-                    <button type="button" class="auth-button">Login</button>
-                    <button type="button" class="auth-button auth-primary">Register</button>
-                </div>
+    <!-- 导航栏 -->
+    <header class="header-navbar" role="banner">
+      <div class="navbar-container">
+        <div class="navbar-row">
+          <!-- 品牌标识 -->
+          <a href="#home" class="navbar-logo-link" aria-label="GOAOXOR 首页">
+            <div class="logo-mark logo-rect" aria-hidden="true">
+              <img src="https://app.grapesjs.com/api/assets/random-image?query=%22minimal%20rectangle%20logo%22&amp;w=240&amp;h=64" 
+                   alt="GOAOXOR Logo" 
+                   loading="eager" 
+                   width="120" 
+                   height="32"
+                   class="logo-icon">
             </div>
+            <span class="logo-text">GOAOXOR</span>
+          </a>
+
+          <!-- 主导航 -->
+          <nav class="navbar-links nav-accordion" aria-label="主导航">
+            <div class="nav-acc-group">
+              <button type="button" 
+                      aria-expanded="false" 
+                      aria-controls="nav-services-panel" 
+                      class="nav-acc-btn">
+                Services
+                <img src="https://api.iconify.design/lucide-chevron-down.svg?color=%23334569" 
+                     alt="" 
+                     aria-hidden="true" 
+                     width="16" 
+                     height="16">
+              </button>
+              <div id="nav-services-panel" 
+                   role="menu" 
+                   aria-label="服务子菜单" 
+                   class="nav-submenu">
+                <a href="#home" role="menuitem" class="gjs-t-link">首页</a>
+                <a href="#teams" role="menuitem" class="gjs-t-link">经过认证的团队</a>
+                <a href="#services" role="menuitem" class="gjs-t-link">热门服务</a>
+              </div>
+            </div>
+
+            <div class="nav-acc-group">
+              <button type="button" 
+                      aria-expanded="false" 
+                      aria-controls="nav-more-panel" 
+                      class="nav-acc-btn">
+                More
+                <img src="https://api.iconify.design/lucide-chevron-down.svg?color=%23334569" 
+                     alt="" 
+                     aria-hidden="true" 
+                     width="16" 
+                     height="16">
+              </button>
+              <div id="nav-more-panel" 
+                   role="menu" 
+                   aria-label="更多子菜单" 
+                   class="nav-submenu">
+                <a href="#submit" role="menuitem" class="gjs-t-link">提交项目</a>
+                <a href="#workflow" role="menuitem" class="gjs-t-link">工作流程</a>
+                <a href="#testimonials" role="menuitem" class="gjs-t-link">客户评价</a>
+                <a href="#faq" role="menuitem" class="gjs-t-link">FAQ</a>
+              </div>
+            </div>
+          </nav>
+
+          <!-- 导航操作区域 -->
+          <div class="navbar-actions">
+            <!-- 语言选择 -->
+            <div class="lang-group">
+              <button type="button" 
+                      aria-expanded="false" 
+                      aria-controls="lang-panel" 
+                      id="lang-toggle" 
+                      class="lang-button nav-acc-btn">
+                English ∨
+              </button>
+              <div id="lang-panel" 
+                   role="menu" 
+                   aria-label="语言选项" 
+                   class="lang-panel">
+                <button type="button" 
+                        data-lang="en" 
+                        role="menuitem" 
+                        class="lang-option">
+                  English
+                  <img src="https://api.iconify.design/lucide-check.svg?color=%23cbd5e1" 
+                       alt="已选择" 
+                       aria-hidden="true" 
+                       width="16" 
+                       height="16">
+                </button>
+                <button type="button" 
+                        data-lang="zh" 
+                        role="menuitem" 
+                        class="lang-option">
+                  中文
+                  <img src="https://api.iconify.design/lucide-check.svg?color=%23cbd5e1" 
+                       alt="已选择" 
+                       aria-hidden="true" 
+                       width="16" 
+                       height="16">
+                </button>
+              </div>
+            </div>
+
+            <!-- 认证按钮 -->
+            <button type="button" class="auth-button">Login</button>
+            <button type="button" class="auth-button auth-primary">Register</button>
+          </div>
         </div>
+      </div>
     </header>
 
+    <!-- 主要内容 -->
     <main id="main-content" class="main-content">
-        <!-- Hero 区域 -->
-        <section id="home" class="hero-section" aria-labelledby="hero-title">
-            <div class="hero-parallax-layer" aria-hidden="true"></div>
-            <div class="hero-container">
-                <div class="hero-grid">
-                    <div class="hero-left">
-                        <div class="hero-card reveal">
-                            <h1 id="hero-title" data-i18n="hero.title" class="gjs-t-h1 hero-title">
-                                全球跨境创意制作，一站式高效协作
-                            </h1>
-                            <p data-i18n="hero.subtitle" class="hero-subtitle">
-                                在 GOAOXOR 寻找经过审核的中国精英团队，完成视频、动画与设计项目，以 20%-50% 的成本优势获得国际水准成果。
-                            </p>
-                            <ul class="hero-bullets-list" aria-label="平台优势">
-                                <li class="hero-bullet-item">
-                                    <img src="https://api.iconify.design/lucide-check-circle.svg?color=%2322c55e" 
-                                         alt="" 
-                                         class="icon-check" 
-                                         aria-hidden="true">
-                                    <span data-i18n="hero.point1" class="hero-bullet-text">仅为成功匹配支付费用</span>
-                                </li>
-                                <li class="hero-bullet-item">
-                                    <img src="https://api.iconify.design/lucide-users.svg?color=%23a3e635" 
-                                         alt="" 
-                                         class="icon-users" 
-                                         aria-hidden="true">
-                                    <span data-i18n="hero.point2" class="hero-bullet-text">有效团队匹配</span>
-                                </li>
-                                <li class="hero-bullet-item">
-                                    <img src="https://api.iconify.design/lucide-shield-check.svg?color=%238b5cf6" 
-                                         alt="" 
-                                         class="icon-shield" 
-                                         aria-hidden="true">
-                                    <span data-i18n="hero.point3" class="hero-bullet-text">全程监督项目保证</span>
-                                </li>
-                            </ul>
-                            <div class="hero-buttons">
-                                <a href="#submit" class="gjs-t-button primary-button">
-                                    <span data-i18n="hero.cta">🚀 1 分钟开始</span>
-                                </a>
-                                <a href="#video" class="secondary-button">
-                                    <img src="https://api.iconify.design/lucide-play-circle.svg?color=%23e5e7eb" 
-                                         alt="" 
-                                         class="icon-play" 
-                                         aria-hidden="true">
-                                    <span data-i18n="hero.watch">了解平台</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="hero-right">
-                        <div class="hero-stats-grid">
-                            <div class="stat-card reveal" style="animation-delay: 0.1s">
-                                <span class="stat-number">500+</span>
-                                <span data-i18n="hero.stat1" class="stat-label">Projects Delivered</span>
-                            </div>
-                            <div class="stat-card reveal" style="animation-delay: 0.2s">
-                                <span class="stat-number">120+</span>
-                                <span data-i18n="hero.stat2" class="stat-label">Certified Teams</span>
-                            </div>
-                            <div class="stat-card reveal" style="animation-delay: 0.3s">
-                                <span class="stat-number">$500k+</span>
-                                <span data-i18n="hero.stat3" class="stat-label">Client Savings</span>
-                            </div>
-                        </div>
-                    </div>
+      <!-- Hero 区域 -->
+      <section id="home" class="hero-section" aria-labelledby="hero-title">
+        <div class="hero-parallax-layer" aria-hidden="true"></div>
+        <div class="hero-container">
+          <div class="hero-grid">
+            <div class="hero-left">
+              <div class="hero-card reveal">
+                <h1 id="hero-title" data-i18n="hero.title" class="gjs-t-h1 hero-title">
+                  全球跨境创意制作，一站式高效协作
+                </h1>
+                <p data-i18n="hero.subtitle" class="hero-subtitle">
+                  在 GOAOXOR 寻找经过审核的中国精英团队，完成视频、动画与设计项目，以 20%-50% 的成本优势获得国际水准成果。
+                </p>
+                <ul class="hero-bullets-list" aria-label="平台优势">
+                  <li class="hero-bullet-item">
+                    <img src="https://api.iconify.design/lucide-check-circle.svg?color=%2322c55e" 
+                         alt="" 
+                         class="icon-check" 
+                         aria-hidden="true">
+                    <span data-i18n="hero.point1" class="hero-bullet-text">仅为成功匹配支付费用</span>
+                  </li>
+                  <li class="hero-bullet-item">
+                    <img src="https://api.iconify.design/lucide-users.svg?color=%23a3e635" 
+                         alt="" 
+                         class="icon-users" 
+                         aria-hidden="true">
+                    <span data-i18n="hero.point2" class="hero-bullet-text">有效团队匹配</span>
+                  </li>
+                  <li class="hero-bullet-item">
+                    <img src="https://api.iconify.design/lucide-shield-check.svg?color=%238b5cf6" 
+                         alt="" 
+                         class="icon-shield" 
+                         aria-hidden="true">
+                    <span data-i18n="hero.point3" class="hero-bullet-text">全程监督项目保证</span>
+                  </li>
+                </ul>
+                <div class="hero-buttons">
+                  <a href="#submit" class="gjs-t-button primary-button">
+                    <span data-i18n="hero.cta">🚀 1 分钟开始</span>
+                  </a>
+                  <a href="#video" class="secondary-button">
+                    <img src="https://api.iconify.design/lucide-play-circle.svg?color=%23e5e7eb" 
+                         alt="" 
+                         class="icon-play" 
+                         aria-hidden="true">
+                    <span data-i18n="hero.watch">了解平台</span>
+                  </a>
                 </div>
+              </div>
             </div>
-        </section>
+            <div class="hero-right">
+              <div class="hero-stats-grid">
+                <div class="stat-card reveal" style="animation-delay: 0.1s">
+                  <span class="stat-number">500+</span>
+                  <span data-i18n="hero.stat1" class="stat-label">Projects Delivered</span>
+                </div>
+                <div class="stat-card reveal" style="animation-delay: 0.2s">
+                  <span class="stat-number">120+</span>
+                  <span data-i18n="hero.stat2" class="stat-label">Certified Teams</span>
+                </div>
+                <div class="stat-card reveal" style="animation-delay: 0.3s">
+                  <span class="stat-number">$500k+</span>
+                  <span data-i18n="hero.stat3" class="stat-label">Client Savings</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-        <!-- 认证团队区域 -->
-        <section id="teams" class="certified-teams-section" aria-labelledby="teams-title">
-            <div class="teams-container">
-                <div class="teams-header">
-                    <h2 id="teams-title" data-i18n="teams.title" class="gjs-t-h2 section-title">经过认证的团队</h2>
-                    <a href="#submit" data-i18n="teams.cta" class="gjs-t-link section-action">需要帮助选择？联系我们</a>
-                </div>
-                <div class="teams-grid">
-                    <a href="team-film.html" class="team-category-card reveal">
-                        <span data-i18n="teams.c1" class="category-label">影视与视频</span>
-                    </a>
-                    <a href="team-animation.html" class="team-category-card reveal">
-                        <span data-i18n="teams.c2" class="category-label">动画</span>
-                    </a>
-                    <a href="team-visual.html" class="team-category-card reveal">
-                        <span data-i18n="teams.c3" class="category-label">视觉与设计</span>
-                    </a>
-                    <a href="team-ecommerce.html" class="team-category-card reveal">
-                        <span data-i18n="teams.c4" class="category-label">电商</span>
-                    </a>
-                    <a href="team-more.html" class="team-category-card reveal">
-                        <span data-i18n="teams.c5" class="category-label">更多</span>
-                    </a>
-                </div>
-            </div>
-        </section>
+      <!-- 认证团队区域 -->
+      <section id="teams" class="certified-teams-section" aria-labelledby="teams-title">
+        <div class="teams-container">
+          <div class="teams-header">
+            <h2 id="teams-title" data-i18n="teams.title" class="gjs-t-h2 section-title">经过认证的团队</h2>
+            <a href="#submit" data-i18n="teams.cta" class="gjs-t-link section-action">需要帮助选择？联系我们</a>
+          </div>
+          <div class="teams-grid">
+            <a href="team-film.html" class="team-category-card reveal">
+              <span data-i18n="teams.c1" class="category-label">影视与视频</span>
+            </a>
+            <a href="team-animation.html" class="team-category-card reveal">
+              <span data-i18n="teams.c2" class="category-label">动画</span>
+            </a>
+            <a href="team-visual.html" class="team-category-card reveal">
+              <span data-i18n="teams.c3" class="category-label">视觉与设计</span>
+            </a>
+            <a href="team-ecommerce.html" class="team-category-card reveal">
+              <span data-i18n="teams.c4" class="category-label">电商</span>
+            </a>
+            <a href="team-more.html" class="team-category-card reveal">
+              <span data-i18n="teams.c5" class="category-label">更多</span>
+            </a>
+          </div>
+        </div>
+      </section>
 
-        <!-- 热门服务区域 -->
-        <section id="services" class="popular-services-section" aria-labelledby="services-title">
-            <div class="services-container">
-                <div class="services-header">
-                    <h2 id="services-title" data-i18n="services.title" class="gjs-t-h2 section-title">热门服务</h2>
-                    <div class="carousel-controls">
-                        <button type="button" data-control="prev" class="carousel-prev" aria-label="上一个服务">
-                            <img src="https://api.iconify.design/lucide-chevron-left.svg?color=%23e5e7eb" 
-                                 alt="" 
-                                 class="icon-prev" 
-                                 aria-hidden="true">
-                        </button>
-                        <button type="button" data-control="next" class="carousel-next" aria-label="下一个服务">
-                            <img src="https://api.iconify.design/lucide-chevron-right.svg?color=%23e5e7eb" 
-                                 alt="" 
-                                 class="icon-next" 
-                                 aria-hidden="true">
-                        </button>
-                    </div>
-                </div>
-                <div class="carousel-viewport">
-                    <div class="carousel-track">
-                        <article class="service-card reveal">
-                            <img src="https://app.grapesjs.com/api/assets/random-image?query=%22product%20video%22&amp;w=640&amp;h=420" 
-                                 alt="产品宣传视频制作案例" 
-                                 loading="lazy" 
-                                 class="service-image">
-                            <div class="service-content">
-                                <h3 data-i18n="services.s1.title" class="service-title">产品宣传视频</h3>
-                                <div class="service-meta">
-                                    <span data-i18n="services.s1.projects">完成 120+</span>
-                                    <span class="service-rating">
-                                        <img src="https://api.iconify.design/lucide-star.svg?color=%23fbbf24" 
-                                             alt="评分" 
-                                             class="icon-star" 
-                                             aria-hidden="true">
-                                        <span>4.9</span>
-                                    </span>
-                                </div>
-                            </div>
-                        </article>
-                        <article class="service-card reveal">
-                            <img src="https://app.grapesjs.com/api/assets/random-image?query=%22explainer%20animation%22&amp;w=640&amp;h=420" 
-                                 alt="2D/3D解说动画制作案例" 
-                                 loading="lazy" 
-                                 class="service-image">
-                            <div class="service-content">
-                                <h3 data-i18n="services.s2.title" class="service-title">2D/3D 解说动画</h3>
-                                <div class="service-meta">
-                                    <span data-i18n="services.s2.projects">完成 200+</span>
-                                    <span class="service-rating">
-                                        <img src="https://api.iconify.design/lucide-star.svg?color=%23fbbf24" 
-                                             alt="评分" 
-                                             class="icon-star" 
-                                             aria-hidden="true">
-                                        <span>4.8</span>
-                                    </span>
-                                </div>
-                            </div>
-                        </article>
-                        <article class="service-card reveal">
-                            <img src="https://app.grapesjs.com/api/assets/random-image?query=%22ui%20design%22&amp;w=640&amp;h=420" 
-                                 alt="品牌与视觉设计案例" 
-                                 loading="lazy" 
-                                 class="service-image">
-                            <div class="service-content">
-                                <h3 data-i18n="services.s3.title" class="service-title">品牌与视觉设计</h3>
-                                <div class="service-meta">
-                                    <span data-i18n="services.s3.projects">完成 150+</span>
-                                    <span class="service-rating">
-                                        <img src="https://api.iconify.design/lucide-star.svg?color=%23fbbf24" 
-                                             alt="评分" 
-                                             class="icon-star" 
-                                             aria-hidden="true">
-                                        <span>4.9</span>
-                                    </span>
-                                </div>
-                            </div>
-                        </article>
-                        <article class="service-card reveal">
-                            <img src="https://app.grapesjs.com/api/assets/random-image?query=%22motion%20graphics%22&amp;w=640&amp;h=420" 
-                                 alt="Motion Graphics设计案例" 
-                                 loading="lazy" 
-                                 class="service-image">
-                            <div class="service-content">
-                                <h3 data-i18n="services.s4.title" class="service-title">Motion Graphics</h3>
-                                <div class="service-meta">
-                                    <span data-i18n="services.s4.projects">完成 90+</span>
-                                    <span class="service-rating">
-                                        <img src="https://api.iconify.design/lucide-star.svg?color=%23fbbf24" 
-                                             alt="评分" 
-                                             class="icon-star" 
-                                             aria-hidden="true">
-                                        <span>4.7</span>
-                                    </span>
-                                </div>
-                            </div>
-                        </article>
-                        <article class="service-card reveal">
-                            <img src="https://app.grapesjs.com/api/assets/random-image?query=%22ecommerce%20video%22&amp;w=640&amp;h=420" 
-                                 alt="电商短视频制作案例" 
-                                 loading="lazy" 
-                                 class="service-image">
-                            <div class="service-content">
-                                <h3 data-i18n="services.s5.title" class="service-title">电商短视频</h3>
-                                <div class="service-meta">
-                                    <span data-i18n="services.s5.projects">完成 300+</span>
-                                    <span class="service-rating">
-                                        <img src="https://api.iconify.design/lucide-star.svg?color=%23fbbf24" 
-                                             alt="评分" 
-                                             class="icon-star" 
-                                             aria-hidden="true">
-                                        <span>5.0</span>
-                                    </span>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-                </div>
+      <!-- 热门服务区域 -->
+      <section id="services" class="popular-services-section" aria-labelledby="services-title">
+        <div class="services-container">
+          <div class="services-header">
+            <h2 id="services-title" data-i18n="services.title" class="gjs-t-h2 section-title">热门服务</h2>
+            <div class="carousel-controls">
+              <button type="button" data-control="prev" class="carousel-prev" aria-label="上一个服务">
+                <img src="https://api.iconify.design/lucide-chevron-left.svg?color=%23e5e7eb" 
+                     alt="" 
+                     class="icon-prev" 
+                     aria-hidden="true">
+              </button>
+              <button type="button" data-control="next" class="carousel-next" aria-label="下一个服务">
+                <img src="https://api.iconify.design/lucide-chevron-right.svg?color=%23e5e7eb" 
+                     alt="" 
+                     class="icon-next" 
+                     aria-hidden="true">
+              </button>
             </div>
-        </section>
+          </div>
+          <div class="carousel-viewport">
+            <div class="carousel-track">
+              <article class="service-card reveal">
+                <img src="https://app.grapesjs.com/api/assets/random-image?query=%22product%20video%22&amp;w=640&amp;h=420" 
+                     alt="产品宣传视频制作案例" 
+                     loading="lazy" 
+                     class="service-image">
+                <div class="service-content">
+                  <h3 data-i18n="services.s1.title" class="service-title">产品宣传视频</h3>
+                  <div class="service-meta">
+                    <span data-i18n="services.s1.projects">完成 120+</span>
+                    <span class="service-rating">
+                      <img src="https://api.iconify.design/lucide-star.svg?color=%23fbbf24" 
+                           alt="评分" 
+                           class="icon-star" 
+                           aria-hidden="true">
+                      <span>4.9</span>
+                    </span>
+                  </div>
+                </div>
+              </article>
+              
+              <article class="service-card reveal">
+                <img src="https://app.grapesjs.com/api/assets/random-image?query=%22explainer%20animation%22&amp;w=640&amp;h=420" 
+                     alt="2D/3D解说动画制作案例" 
+                     loading="lazy" 
+                     class="service-image">
+                <div class="service-content">
+                  <h3 data-i18n="services.s2.title" class="service-title">2D/3D 解说动画</h3>
+                  <div class="service-meta">
+                    <span data-i18n="services.s2.projects">完成 200+</span>
+                    <span class="service-rating">
+                      <img src="https://api.iconify.design/lucide-star.svg?color=%23fbbf24" 
+                           alt="评分" 
+                           class="icon-star" 
+                           aria-hidden="true">
+                      <span>4.8</span>
+                    </span>
+                  </div>
+                </div>
+              </article>
+              
+              <article class="service-card reveal">
+                <img src="https://app.grapesjs.com/api/assets/random-image?query=%22ui%20design%22&amp;w=640&amp;h=420" 
+                     alt="品牌与视觉设计案例" 
+                     loading="lazy" 
+                     class="service-image">
+                <div class="service-content">
+                  <h3 data-i18n="services.s3.title" class="service-title">品牌与视觉设计</h3>
+                  <div class="service-meta">
+                    <span data-i18n="services.s3.projects">完成 150+</span>
+                    <span class="service-rating">
+                      <img src="https://api.iconify.design/lucide-star.svg?color=%23fbbf24" 
+                           alt="评分" 
+                           class="icon-star" 
+                           aria-hidden="true">
+                      <span>4.9</span>
+                    </span>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
 
-        <!-- 提交项目区域 -->
-        <section id="submit" class="submit-project-section" aria-labelledby="submit-title">
-            <div class="submit-container">
-                <div class="submit-card">
-                    <div class="submit-grid">
-                        <div class="submit-left">
-                            <h2 id="submit-title" data-i18n="submit.title" class="gjs-t-h2 section-title">提交你的项目</h2>
-                            <p data-i18n="submit.desc" class="section-paragraph">
-                                GOAOXOR 通过严格审核与智能匹配，快速为您推荐最合适的创意团队。平台全程透明跟进，确保按时按质交付。
-                            </p>
-                            <div class="submit-buttons">
-                                <a href="#workflow" class="gjs-t-button primary-button">
-                                    <span data-i18n="submit.cta">立即开始</span>
-                                </a>
-                                <a href="#faq" class="secondary-button">
-                                    <img src="https://api.iconify.design/lucide-help-circle.svg?color=%23334569" 
-                                         alt="" 
-                                         class="icon-help" 
-                                         aria-hidden="true">
-                                    <span data-i18n="submit.help">有问题？查看 FAQ</span>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="submit-right">
-                            <div class="illustration-wrapper">
-                                <img src="https://app.grapesjs.com/api/assets/random-image?query=%22creative%20team%20illustration%22&amp;w=1100&amp;h=700" 
-                                     alt="创意团队协作插图" 
-                                     loading="lazy" 
-                                     class="illustration-image">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="submit-advantages-grid">
-                        <div class="advantage-card reveal">
-                            <div class="advantage-header">
-                                <img src="https://api.iconify.design/lucide-bolt.svg?color=%2381e6d9" 
-                                     alt="" 
-                                     class="icon-bolt" 
-                                     aria-hidden="true">
-                                <h3 data-i18n="submit.a1.title" class="advantage-title">快速匹配团队</h3>
-                            </div>
-                            <p data-i18n="submit.a1.desc" class="advantage-text">48 小时内给出候选团队，快速推进项目。</p>
-                        </div>
-                        <div class="advantage-card reveal">
-                            <div class="advantage-header">
-                                <img src="https://api.iconify.design/lucide-badge-check.svg?color=%2381e6d9" 
-                                     alt="" 
-                                     class="icon-check" 
-                                     aria-hidden="true">
-                                <h3 data-i18n="submit.a2.title" class="advantage-title">专家顾问支持</h3>
-                            </div>
-                            <p data-i18n="submit.a2.desc" class="advantage-text">项目顾问全程陪伴，需求澄清、风险预警。</p>
-                        </div>
-                        <div class="advantage-card reveal">
-                            <div class="advantage-header">
-                                <img src="https://api.iconify.design/lucide-shield.svg?color=%2381e6d9" 
-                                     alt="" 
-                                     class="icon-shield" 
-                                     aria-hidden="true">
-                                <h3 data-i18n="submit.a3.title" class="advantage-title">安全与认证</h3>
-                            </div>
-                            <p data-i18n="submit.a3.desc" class="advantage-text">严格审核与合规合同，保障资金与交付。</p>
-                        </div>
-                    </div>
+      <!-- 提交项目区域 -->
+      <section id="submit" class="submit-project-section" aria-labelledby="submit-title">
+        <div class="submit-container">
+          <div class="submit-card">
+            <div class="submit-grid">
+              <div class="submit-left">
+                <h2 id="submit-title" data-i18n="submit.title" class="gjs-t-h2 section-title">提交你的项目</h2>
+                <p data-i18n="submit.desc" class="section-paragraph">
+                  GOAOXOR 通过严格审核与智能匹配，快速为您推荐最合适的创意团队。平台全程透明跟进，确保按时按质交付。
+                </p>
+                <div class="submit-buttons">
+                  <a href="#workflow" class="gjs-t-button primary-button">
+                    <span data-i18n="submit.cta">立即开始</span>
+                  </a>
+                  <a href="#faq" class="secondary-button">
+                    <img src="https://api.iconify.design/lucide-help-circle.svg?color=%23334569" 
+                         alt="" 
+                         class="icon-help" 
+                         aria-hidden="true">
+                    <span data-i18n="submit.help">有问题？查看 FAQ</span>
+                  </a>
                 </div>
+              </div>
+              <div class="submit-right">
+                <div class="illustration-wrapper">
+                  <img src="https://app.grapesjs.com/api/assets/random-image?query=%22creative%20team%20illustration%22&amp;w=1100&amp;h=700" 
+                       alt="创意团队协作插图" 
+                       loading="lazy" 
+                       class="illustration-image">
+                </div>
+              </div>
             </div>
-        </section>
+            <div class="submit-advantages-grid">
+              <div class="advantage-card reveal">
+                <div class="advantage-header">
+                  <img src="https://api.iconify.design/lucide-bolt.svg?color=%2381e6d9" 
+                       alt="" 
+                       class="icon-bolt" 
+                       aria-hidden="true">
+                  <h3 data-i18n="submit.a1.title" class="advantage-title">快速匹配团队</h3>
+                </div>
+                <p data-i18n="submit.a1.desc" class="advantage-text">48 小时内给出候选团队，快速推进项目。</p>
+              </div>
+              <div class="advantage-card reveal">
+                <div class="advantage-header">
+                  <img src="https://api.iconify.design/lucide-badge-check.svg?color=%2381e6d9" 
+                       alt="" 
+                       class="icon-check" 
+                       aria-hidden="true">
+                  <h3 data-i18n="submit.a2.title" class="advantage-title">专家顾问支持</h3>
+                </div>
+                <p data-i18n="submit.a2.desc" class="advantage-text">项目顾问全程陪伴，需求澄清、风险预警。</p>
+              </div>
+              <div class="advantage-card reveal">
+                <div class="advantage-header">
+                  <img src="https://api.iconify.design/lucide-shield.svg?color=%2381e6d9" 
+                       alt="" 
+                       class="icon-shield" 
+                       aria-hidden="true">
+                  <h3 data-i18n="submit.a3.title" class="advantage-title">安全与认证</h3>
+                </div>
+                <p data-i18n="submit.a3.desc" class="advantage-text">严格审核与合规合同，保障资金与交付。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-        <!-- 视频介绍区域 -->
-        <section id="video" class="video-section" aria-labelledby="video-title">
-            <div class="video-container">
-                <h2 id="video-title" data-i18n="video.title" class="gjs-t-h2 section-title">了解 GOAOXOR</h2>
-                <div class="video-wrapper">
-                    <iframe allowfullscreen 
-                            referrerpolicy="strict-origin-when-cross-origin" 
-                            src="https://www.youtube.com/embed/4qnbn7Kz3FA?" 
-                            title="GOAOXOR 平台介绍视频 - 全球跨境创意制作服务平台"
-                            aria-label="GOAOXOR 平台介绍视频"
-                            class="video-iframe"
-                            loading="lazy">
-                    </iframe>
-                </div>
+      <!-- 工作流程区域 -->
+      <section id="workflow" class="workflow-section" aria-labelledby="workflow-title">
+        <div class="workflow-container">
+          <h2 id="workflow-title" data-i18n="workflow.title" class="gjs-t-h2 section-title">工作流程</h2>
+          <div class="workflow-grid">
+            <div class="workflow-step reveal">
+              <div class="step-header">
+                <img src="https://api.iconify.design/lucide-file-plus-2.svg?color=%2399f6e4" 
+                     alt="" 
+                     class="step-icon" 
+                     aria-hidden="true">
+                <h3 data-i18n="workflow.s1.title" class="step-title">客户提交项目需求</h3>
+              </div>
+              <p data-i18n="workflow.s1.desc" class="step-description">填写目标、预算与时间表，上传参考资料。</p>
             </div>
-        </section>
+            <div class="workflow-step reveal">
+              <div class="step-header">
+                <img src="https://api.iconify.design/lucide-filter.svg?color=%2399f6e4" 
+                     alt="" 
+                     class="step-icon" 
+                     aria-hidden="true">
+                <h3 data-i18n="workflow.s2.title" class="step-title">平台筛选团队</h3>
+              </div>
+              <p data-i18n="workflow.s2.desc" class="step-description">基于领域经验与可用性进行筛选与尽调。</p>
+            </div>
+            <div class="workflow-step reveal">
+              <div class="step-header">
+                <img src="https://api.iconify.design/lucide-heart-handshake.svg?color=%2399f6e4" 
+                     alt="" 
+                     class="step-icon" 
+                     aria-hidden="true">
+                <h3 data-i18n="workflow.s3.title" class="step-title">推荐匹配团队</h3>
+              </div>
+              <p data-i18n="workflow.s3.desc" class="step-description">提供 2-3 个候选，与客户进行初次沟通。</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-        <!-- 工作流程区域 -->
-        <section id="workflow" class="workflow-section" aria-labelledby="workflow-title">
-            <div class="workflow-container">
-                <h2 id="workflow-title" data-i18n="workflow.title" class="gjs-t-h2 section-title">工作流程</h2>
-                <div class="workflow-grid">
-                    <div class="workflow-step reveal">
-                        <div class="step-header">
-                            <img src="https://api.iconify.design/lucide-file-plus-2.svg?color=%2399f6e4" 
-                                 alt="" 
-                                 class="step-icon" 
-                                 aria-hidden="true">
-                            <h3 data-i18n="workflow.s1.title" class="step-title">客户提交项目需求</h3>
-                        </div>
-                        <p data-i18n="workflow.s1.desc" class="step-description">填写目标、预算与时间表，上传参考资料。</p>
-                    </div>
-                    <div class="workflow-step reveal">
-                        <div class="step-header">
-                            <img src="https://api.iconify.design/lucide-filter.svg?color=%2399f6e4" 
-                                 alt="" 
-                                 class="step-icon" 
-                                 aria-hidden="true">
-                            <h3 data-i18n="workflow.s2.title" class="step-title">平台筛选团队</h3>
-                        </div>
-                        <p data-i18n="workflow.s2.desc" class="step-description">基于领域经验与可用性进行筛选与尽调。</p>
-                    </div>
-                    <div class="workflow-step reveal">
-                        <div class="step-header">
-                            <img src="https://api.iconify.design/lucide-heart-handshake.svg?color=%2399f6e4" 
-                                 alt="" 
-                                 class="step-icon" 
-                                 aria-hidden="true">
-                            <h3 data-i18n="workflow.s3.title" class="step-title">推荐匹配团队</h3>
-                        </div>
-                        <p data-i18n="workflow.s3.desc" class="step-description">提供 2-3 个候选，与客户进行初次沟通。</p>
-                    </div>
-                    <div class="workflow-step reveal">
-                        <div class="step-header">
-                            <img src="https://api.iconify.design/lucide-badge-check.svg?color=%2399f6e4" 
-                                 alt="" 
-                                 class="step-icon" 
-                                 aria-hidden="true">
-                            <h3 data-i18n="workflow.s4.title" class="step-title">客户确认团队</h3>
-                        </div>
-                        <p data-i18n="workflow.s4.desc" class="step-description">确定最终合作团队与工作方式。</p>
-                    </div>
-                    <div class="workflow-step reveal">
-                        <div class="step-header">
-                            <img src="https://api.iconify.design/lucide-file-signature.svg?color=%2399f6e4" 
-                                 alt="" 
-                                 class="step-icon" 
-                                 aria-hidden="true">
-                            <h3 data-i18n="workflow.s5.title" class="step-title">平台生成合同</h3>
-                        </div>
-                        <p data-i18n="workflow.s5.desc" class="step-description">明确交付物、时间与里程碑，支持多币种。</p>
-                    </div>
-                    <div class="workflow-step reveal">
-                        <div class="step-header">
-                            <img src="https://api.iconify.design/lucide-wallet.svg?color=%2399f6e4" 
-                                 alt="" 
-                                 class="step-icon" 
-                                 aria-hidden="true">
-                            <h3 data-i18n="workflow.s6.title" class="step-title">客户与团队结算</h3>
-                        </div>
-                        <p data-i18n="workflow.s6.desc" class="step-description">按里程碑放款，交付验收后完成支付。</p>
-                    </div>
-                </div>
+      <!-- FAQ 区域 -->
+      <section id="faq" class="faq-section" aria-labelledby="faq-title">
+        <div class="faq-container">
+          <h2 id="faq-title" data-i18n="faq.title" class="gjs-t-h2 section-title">常见问题</h2>
+          <div class="faq-list">
+            <div class="faq-item" aria-expanded="false">
+              <button type="button" class="faq-question-button">
+                <span data-i18n="faq.q1.q" class="faq-question">如何开始项目并匹配团队？</span>
+                <img src="https://api.iconify.design/lucide-plus.svg?color=%23e5e7eb" 
+                     alt="展开/收起" 
+                     class="faq-toggle-icon" 
+                     aria-hidden="true">
+              </button>
+              <div class="faq-answer">
+                <p data-i18n="faq.q1.a">
+                  点击"立即开始"，提交需求，48 小时内收到候选团队，与之沟通后选择最合适的团队。
+                </p>
+              </div>
             </div>
-        </section>
-
-        <!-- 优势区域 -->
-        <section id="advantages" class="advantages-section" aria-labelledby="advantages-title">
-            <div class="advantages-container">
-                <h2 id="advantages-title" data-i18n="adv.title" class="gjs-t-h2 section-title">消除全球创意协作障碍</h2>
-                <div class="advantages-grid">
-                    <div class="advantage-item reveal">
-                        <img src="https://api.iconify.design/lucide-banknote.svg?color=%23a3e635" 
-                             alt="" 
-                             class="icon-cost" 
-                             aria-hidden="true">
-                        <div>
-                            <h3 data-i18n="adv.a1.title" class="advantage-title">降低 20%-50% 成本</h3>
-                            <p data-i18n="adv.a1.desc" class="advantage-text">在保证质量的前提下，显著优化预算。</p>
-                        </div>
-                    </div>
-                    <div class="advantage-item reveal">
-                        <img src="https://api.iconify.design/lucide-trophy.svg?color=%23f59e0b" 
-                             alt="" 
-                             class="icon-trophy" 
-                             aria-hidden="true">
-                        <div>
-                            <h3 data-i18n="adv.a2.title" class="advantage-title">顶尖中国团队</h3>
-                            <p data-i18n="adv.a2.desc" class="advantage-text">覆盖一线城市与成熟制作公司，经验丰富。</p>
-                        </div>
-                    </div>
-                    <div class="advantage-item reveal">
-                        <img src="https://api.iconify.design/lucide-globe.svg?color=%2381e6d9" 
-                             alt="" 
-                             class="icon-globe" 
-                             aria-hidden="true">
-                        <div>
-                            <h3 data-i18n="adv.a3.title" class="advantage-title">国际化服务</h3>
-                            <p data-i18n="adv.a3.desc" class="advantage-text">英语/中文双语沟通与跨时区项目管理。</p>
-                        </div>
-                    </div>
-                    <div class="advantage-item reveal">
-                        <img src="https://api.iconify.design/lucide-badge-alert.svg?color=%23f97316" 
-                             alt="" 
-                             class="icon-verify" 
-                             aria-hidden="true">
-                        <div>
-                            <h3 data-i18n="adv.a4.title" class="advantage-title">严格审核</h3>
-                            <p data-i18n="adv.a4.desc" class="advantage-text">作品集、资质与评价多维评估，动态淘汰。</p>
-                        </div>
-                    </div>
-                    <div class="advantage-item reveal">
-                        <img src="https://api.iconify.design/lucide-eye.svg?color=%2393c5fd" 
-                             alt="" 
-                             class="icon-eye" 
-                             aria-hidden="true">
-                        <div>
-                            <h3 data-i18n="adv.a5.title" class="advantage-title">项目监督</h3>
-                            <p data-i18n="adv.a5.desc" class="advantage-text">里程碑复盘、风险预警与质量抽检机制。</p>
-                        </div>
-                    </div>
-                    <div class="advantage-item reveal">
-                        <img src="https://api.iconify.design/lucide-layers.svg?color=%23c084fc" 
-                             alt="" 
-                             class="icon-layers" 
-                             aria-hidden="true">
-                        <div>
-                            <h3 data-i18n="adv.a6.title" class="advantage-title">多领域专家</h3>
-                            <p data-i18n="adv.a6.desc" class="advantage-text">视频、动画、设计、电商素材一站式交付。</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="faq-item" aria-expanded="false">
+              <button type="button" class="faq-question-button">
+                <span data-i18n="faq.q2.q" class="faq-question">费用如何计算？是否有隐藏收费？</span>
+                <img src="https://api.iconify.design/lucide-plus.svg?color=%23e5e7eb" 
+                     alt="展开/收起" 
+                     class="faq-toggle-icon" 
+                     aria-hidden="true">
+              </button>
+              <div class="faq-answer">
+                <p data-i18n="faq.q2.a">
+                  平台不收订阅费，仅对成功匹配的项目收取透明服务费，无任何隐藏费用。
+                </p>
+              </div>
             </div>
-        </section>
-
-        <!-- 客户评价区域 -->
-        <section id="testimonials" class="testimonials-section" aria-labelledby="testimonials-title">
-            <div class="testimonials-container">
-                <div class="testimonials-header">
-                    <h2 id="testimonials-title" data-i18n="testimonials.title" class="gjs-t-h2 section-title">全球客户信赖</h2>
-                    <span data-i18n="testimonials.subtitle" class="section-subtitle">来自北美、欧洲、东南亚等客户的真实反馈</span>
-                </div>
-                <div class="testimonials-grid">
-                    <article class="testimonial-card reveal">
-                        <div data-i18n="testimonials.t1.role" class="testimonial-role">SaaS 市场负责人</div>
-                        <p data-i18n="testimonials.t1.text" class="testimonial-text">
-                            他们在两周内交付了高质量解释动画，转化率提升了 27%。沟通顺畅、流程专业。
-                        </p>
-                        <div class="testimonial-footer">
-                            <img src="https://app.grapesjs.com/api/assets/random-image?query=%22portrait%20corporate%22&amp;w=80&amp;h=80" 
-                                 alt="Alicia P. 的头像" 
-                                 loading="lazy" 
-                                 class="client-avatar">
-                            <div>
-                                <div data-i18n="testimonials.t1.name" class="client-name">Alicia P.</div>
-                                <div data-i18n="testimonials.t1.company" class="client-company">San Francisco, US</div>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="testimonial-card reveal">
-                        <div data-i18n="testimonials.t2.role" class="testimonial-role">电商总监</div>
-                        <p data-i18n="testimonials.t2.text" class="testimonial-text">
-                            我们的电商视频周期缩短一半，成本更低，质量不打折。
-                        </p>
-                        <div class="testimonial-footer">
-                            <img src="https://app.grapesjs.com/api/assets/random-image?query=%22portrait%20startup%22&amp;w=80&amp;h=80" 
-                                 alt="Marco T. 的头像" 
-                                 loading="lazy" 
-                                 class="client-avatar">
-                            <div>
-                                <div data-i18n="testimonials.t2.name" class="client-name">Marco T.</div>
-                                <div data-i18n="testimonials.t2.company" class="client-company">Milan, IT</div>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="testimonial-card reveal">
-                        <div data-i18n="testimonials.t3.role" class="testimonial-role">广告公司制片</div>
-                        <p data-i18n="testimonials.t3.text" class="testimonial-text">
-                            GOAOXOR 的审核标准很放心，跨时区协作非常顺滑。
-                        </p>
-                        <div class="testimonial-footer">
-                            <img src="https://app.grapesjs.com/api/assets/random-image?query=%22portrait%20business%22&amp;w=80&amp;h=80" 
-                                 alt="Hannah R. 的头像" 
-                                 loading="lazy" 
-                                 class="client-avatar">
-                            <div>
-                                <div data-i18n="testimonials.t3.name" class="client-name">Hannah R.</div>
-                                <div data-i18n="testimonials.t3.company" class="client-company">London, UK</div>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- FAQ 区域 -->
-        <section id="faq" class="faq-section" aria-labelledby="faq-title">
-            <div class="faq-container">
-                <h2 id="faq-title" data-i18n="faq.title" class="gjs-t-h2 section-title">常见问题</h2>
-                <div class="faq-list">
-                    <div class="faq-item" aria-expanded="false">
-                        <button type="button" class="faq-question-button">
-                            <span data-i18n="faq.q1.q" class="faq-question">如何开始项目并匹配团队？</span>
-                            <img src="https://api.iconify.design/lucide-plus.svg?color=%23e5e7eb" 
-                                 alt="展开/收起" 
-                                 class="faq-toggle-icon" 
-                                 aria-hidden="true">
-                        </button>
-                        <div class="faq-answer">
-                            <p data-i18n="faq.q1.a">
-                                点击"立即开始"，提交需求，48 小时内收到候选团队，与之沟通后选择最合适的团队。
-                            </p>
-                        </div>
-                    </div>
-                    <div class="faq-item" aria-expanded="false">
-                        <button type="button" class="faq-question-button">
-                            <span data-i18n="faq.q2.q" class="faq-question">费用如何计算？是否有隐藏收费？</span>
-                            <img src="https://api.iconify.design/lucide-plus.svg?color=%23e5e7eb" 
-                                 alt="展开/收起" 
-                                 class="faq-toggle-icon" 
-                                 aria-hidden="true">
-                        </button>
-                        <div class="faq-answer">
-                            <p data-i18n="faq.q2.a">
-                                平台不收订阅费，仅对成功匹配的项目收取透明服务费，无任何隐藏费用。
-                            </p>
-                        </div>
-                    </div>
-                    <div class="faq-item" aria-expanded="false">
-                        <button type="button" class="faq-question-button">
-                            <span data-i18n="faq.q3.q" class="faq-question">如何保障项目质量与交付时间？</span>
-                            <img src="https://api.iconify.design/lucide-plus.svg?color=%23e5e7eb" 
-                                 alt="展开/收起" 
-                                 class="faq-toggle-icon" 
-                                 aria-hidden="true">
-                        </button>
-                        <div class="faq-answer">
-                            <p data-i18n="faq.q3.a">
-                                通过里程碑管理、阶段验收与顾问监督确保质量与进度，必要时可启动替换机制。
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+          </div>
+        </div>
+      </section>
     </main>
 
     <!-- 页脚 -->
     <footer class="footer" role="contentinfo">
-        <div class="footer-container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h4 data-i18n="footer.about.title" class="footer-title">关于 GOAOXOR</h4>
-                    <p data-i18n="footer.about.desc" class="footer-text">
-                        GOAOXOR 连接全球客户与中国精英创意团队，专注影视、动画与视频项目，以更低成本交付国际品质。
-                    </p>
-                </div>
-                <div class="footer-col">
-                    <h4 data-i18n="footer.explore.title" class="footer-title">探索</h4>
-                    <ul class="footer-links-list" aria-label="网站导航">
-                        <li><a href="#teams" data-i18n="footer.explore.teams" class="gjs-t-link footer-link">经过认证的团队</a></li>
-                        <li><a href="#services" data-i18n="footer.explore.popular" class="gjs-t-link footer-link">热门服务</a></li>
-                        <li><a href="#submit" data-i18n="footer.explore.submit" class="gjs-t-link footer-link">提交项目</a></li>
-                        <li><a href="#workflow" data-i18n="footer.explore.workflow" class="gjs-t-link footer-link">工作流程</a></li>
-                        <li><a href="#faq" data-i18n="footer.explore.faq" class="gjs-t-link footer-link">FAQ</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4 data-i18n="footer.connect.title" class="footer-title">联系我们</h4>
-                    <div class="social-row">
-                        <a href="mailto:hello@goaoxor.com" aria-label="发送邮件" class="social-button">
-                            <img src="https://api.iconify.design/lucide-mail.svg?color=%23334569" 
-                                 alt="" 
-                                 class="social-icon" 
-                                 aria-hidden="true">
-                        </a>
-                        <a href="#" aria-label="关注 TikTok" class="social-button">
-                            <img src="https://api.iconify.design/lucide-music-4.svg?color=%23334569" 
-                                 alt="" 
-                                 class="social-icon" 
-                                 aria-hidden="true">
-                        </a>
-                        <a href="#" aria-label="关注 Instagram" class="social-button">
-                            <img src="https://api.iconify.design/lucide-instagram.svg?color=%23334569" 
-                                 alt="" 
-                                 class="social-icon" 
-                                 aria-hidden="true">
-                        </a>
-                    </div>
-                </div>
-                <div class="footer-col">
-                    <h4 data-i18n="footer.news.title" class="footer-title">订阅更新</h4>
-                    <p data-i18n="footer.news.desc" class="footer-text">
-                        订阅跨境创意制作与协作的洞见与案例。
-                    </p>
-                    <form method="get" class="newsletter-form" aria-label="订阅新闻通讯">
-                        <label for="newsletter" class="newsletter-label">邮箱地址</label>
-                        <input type="email" 
-                               id="newsletter" 
-                               required 
-                               placeholder="you@example.com" 
-                               class="newsletter-input"
-                               aria-describedby="newsletter-help">
-                        <button type="submit" 
-                                data-i18n="footer.news.cta" 
-                                class="gjs-t-button newsletter-button">
-                            立即加入
-                        </button>
-                        <div id="newsletter-help" class="visually-hidden">
-                            我们承诺不会分享您的邮箱地址，您可以随时取消订阅。
-                        </div>
-                    </form>
-                </div>
+      <div class="footer-container">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <h4 data-i18n="footer.about.title" class="footer-title">关于 GOAOXOR</h4>
+            <p data-i18n="footer.about.desc" class="footer-text">
+              GOAOXOR 连接全球客户与中国精英创意团队，专注影视、动画与视频项目，以更低成本交付国际品质。
+            </p>
+          </div>
+          <div class="footer-col">
+            <h4 data-i18n="footer.explore.title" class="footer-title">探索</h4>
+            <ul class="footer-links-list" aria-label="网站导航">
+              <li><a href="#teams" data-i18n="footer.explore.teams" class="gjs-t-link footer-link">经过认证的团队</a></li>
+              <li><a href="#services" data-i18n="footer.explore.popular" class="gjs-t-link footer-link">热门服务</a></li>
+              <li><a href="#submit" data-i18n="footer.explore.submit" class="gjs-t-link footer-link">提交项目</a></li>
+              <li><a href="#workflow" data-i18n="footer.explore.workflow" class="gjs-t-link footer-link">工作流程</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4 data-i18n="footer.connect.title" class="footer-title">联系我们</h4>
+            <div class="social-row">
+              <a href="mailto:hello@goaoxor.com" aria-label="发送邮件" class="social-button">
+                <img src="https://api.iconify.design/lucide-mail.svg?color=%23334569" 
+                     alt="" 
+                     class="social-icon" 
+                     aria-hidden="true">
+              </a>
+              <a href="#" aria-label="关注 TikTok" class="social-button">
+                <img src="https://api.iconify.design/lucide-music-4.svg?color=%23334569" 
+                     alt="" 
+                     class="social-icon" 
+                     aria-hidden="true">
+              </a>
             </div>
-            <div class="footer-bottom">
-                <p data-i18n="footer.copyright" class="footer-copyright">© 2025 GOAOXOR. 保留所有权利。</p>
-            </div>
+          </div>
+          <div class="footer-col">
+            <h4 data-i18n="footer.news.title" class="footer-title">订阅更新</h4>
+            <p data-i18n="footer.news.desc" class="footer-text">
+              订阅跨境创意制作与协作的洞见与案例。
+            </p>
+            <form method="get" class="newsletter-form" aria-label="订阅新闻通讯">
+              <label for="newsletter" class="newsletter-label">邮箱地址</label>
+              <input type="email" 
+                     id="newsletter" 
+                     required 
+                     placeholder="you@example.com" 
+                     class="newsletter-input"
+                     aria-describedby="newsletter-help">
+              <button type="submit" 
+                      data-i18n="footer.news.cta" 
+                      class="gjs-t-button newsletter-button">
+                立即加入
+              </button>
+              <div id="newsletter-help" class="visually-hidden">
+                我们承诺不会分享您的邮箱地址，您可以随时取消订阅。
+              </div>
+            </form>
+          </div>
         </div>
+        <div class="footer-bottom">
+          <p data-i18n="footer.copyright" class="footer-copyright">© 2025 GOAOXOR. 保留所有权利。</p>
+        </div>
+      </div>
     </footer>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
