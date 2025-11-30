@@ -1,4 +1,4 @@
-/* 重置和基础样式 */
+/* ===== 重置和基础样式 ===== */
 * { 
   box-sizing: border-box; 
   margin: 0;
@@ -6,7 +6,7 @@
 }
 
 :root {
-  /* 优化色彩系统 - 更专业的蓝色调 */
+  /* 优化色彩系统 */
   --gjs-t-color-primary: #2563eb;
   --gjs-t-color-secondary: #475569;
   --gjs-t-color-accent: #7c3aed;
@@ -14,7 +14,7 @@
   --gjs-t-color-warning: #d97706;
   --gjs-t-color-error: #dc2626;
   
-  /* 新增中性色系统 */
+  /* 中性色系统 */
   --color-surface: #f8fafc;
   --color-border: #e2e8f0;
   --color-text-primary: #0f172a;
@@ -41,7 +41,7 @@
   --radius-xl: 1rem;
 }
 
-/* 基础样式 */
+/* ===== 基础样式 ===== */
 html { 
   scroll-behavior: smooth; 
   font-size: 16px;
@@ -56,7 +56,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* 排版系统 */
+/* ===== 排版系统 ===== */
 .gjs-t-h1 {
   font-size: 3rem;
   line-height: 1.1;
@@ -105,7 +105,7 @@ body {
   color: #1d4ed8;
 }
 
-/* 导航栏优化 */
+/* ===== 导航栏 ===== */
 .header-navbar {
   position: fixed;
   top: 0;
@@ -166,7 +166,7 @@ body {
   gap: var(--space-sm);
 }
 
-/* 导航按钮样式 */
+/* ===== 导航按钮 ===== */
 .nav-acc-btn, .auth-button, .lang-button {
   padding: 0.5rem 0.75rem;
   border: 1px solid var(--color-border);
@@ -201,7 +201,7 @@ body {
   box-shadow: var(--shadow-lg);
 }
 
-/* 下拉菜单 */
+/* ===== 下拉菜单 ===== */
 .nav-submenu, .lang-panel {
   position: absolute;
   top: calc(100% + 0.5rem);
@@ -238,7 +238,7 @@ body {
   border-color: var(--color-border);
 }
 
-/* Hero区域优化 - 解决对比度问题 */
+/* ===== Hero区域 - 修复对比度问题 ===== */
 .hero-section {
   background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
   position: relative;
@@ -386,7 +386,7 @@ body {
   font-size: 0.875rem;
 }
 
-/* 通用卡片样式 */
+/* ===== 通用卡片样式 ===== */
 .service-card, .testimonial-card, .advantage-card, .workflow-step {
   background: white;
   border: 1px solid var(--color-border);
@@ -402,7 +402,7 @@ body {
   border-color: rgba(37, 99, 235, 0.2);
 }
 
-/* 轮播组件 */
+/* ===== 轮播组件 ===== */
 .carousel-viewport {
   overflow: hidden;
   border-radius: var(--radius-lg);
@@ -434,7 +434,7 @@ body {
   background: var(--color-surface);
 }
 
-/* FAQ组件 */
+/* ===== FAQ组件 ===== */
 .faq-list {
   border-radius: var(--radius-lg);
   overflow: hidden;
@@ -479,7 +479,7 @@ body {
   padding: 0 var(--space-lg) var(--space-lg);
 }
 
-/* 页脚 */
+/* ===== 页脚 ===== */
 .footer {
   background: var(--color-surface);
   border-top: 1px solid var(--color-border);
@@ -595,7 +595,7 @@ body {
   font-size: 0.875rem;
 }
 
-/* 动画 */
+/* ===== 动画 ===== */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -618,7 +618,7 @@ body {
   transform: translateY(0);
 }
 
-/* 响应式设计 */
+/* ===== 响应式设计 ===== */
 @media (max-width: 1024px) {
   .gjs-t-h1 {
     font-size: 2.5rem;
@@ -638,14 +638,6 @@ body {
   }
   
   .footer-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  .teams-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  
-  .advantages-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
@@ -680,14 +672,6 @@ body {
   .hero-stats-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  
-  .testimonials-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .workflow-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
 }
 
 @media (max-width: 480px) {
@@ -699,10 +683,7 @@ body {
     font-size: 1.5rem;
   }
   
-  .navbar-container, .hero-container, .teams-container, 
-  .services-container, .submit-container, .video-container,
-  .workflow-container, .advantages-container, .testimonials-container,
-  .faq-container, .footer-container {
+  .navbar-container, .hero-container {
     padding-left: var(--space-md);
     padding-right: var(--space-md);
   }
@@ -711,29 +692,12 @@ body {
     padding: var(--space-lg);
   }
   
-  .teams-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-md);
-  }
-  
-  .workflow-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .advantages-grid {
-    grid-template-columns: 1fr;
-  }
-  
   .footer-grid {
     grid-template-columns: 1fr;
   }
-  
-  .newsletter-form {
-    flex-direction: column;
-  }
 }
 
-/* 无障碍优化 */
+/* ===== 无障碍优化 ===== */
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;
@@ -742,56 +706,19 @@ body {
   }
 }
 
-/* 高对比度模式支持 */
-@media (prefers-contrast: high) {
-  :root {
-    --color-border: #000000;
-    --color-text-primary: #000000;
-    --color-text-secondary: #000000;
-  }
-  
-  .hero-card, .service-card, .testimonial-card, 
-  .advantage-card, .workflow-step {
-    border-width: 2px;
-  }
+/* 跳过导航链接 */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--gjs-t-color-primary);
+  color: white;
+  padding: 8px;
+  border-radius: 4px;
+  text-decoration: none;
+  z-index: 1000;
 }
 
-/* 深色模式支持 */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-surface: #1e293b;
-    --color-border: #334155;
-    --color-text-primary: #f1f5f9;
-    --color-text-secondary: #cbd5e1;
-    --color-text-tertiary: #94a3b8;
-  }
-  
-  body {
-    background-color: #0f172a;
-  }
-  
-  .hero-section {
-    background: linear-gradient(135deg, #020617 0%, #0f172a 50%, #1e293b 100%);
-  }
-  
-  .hero-card, .service-card, .testimonial-card, 
-  .advantage-card, .workflow-step, .stat-card {
-    background: #1e293b;
-    border-color: #334155;
-  }
-  
-  .header-navbar {
-    background: rgba(30, 41, 59, 0.95);
-  }
-  
-  .nav-acc-btn, .auth-button, .lang-button,
-  .carousel-prev, .carousel-next, .social-button {
-    background: #334155;
-    color: #f1f5f9;
-    border-color: #475569;
-  }
-  
-  .footer {
-    background: #1e293b;
-  }
+.skip-link:focus {
+  top: 6px;
 }
