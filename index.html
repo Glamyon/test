@@ -1,536 +1,1257 @@
 <!DOCTYPE html>
-<html lang="zh" class="gjs-t-body">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="robots" content="index,follow">
-    <meta name="generator" content="GrapesJS Studio">
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GOAOXOR — Creative Delivery Without Noise</title>
+  <meta name="description" content="GOAOXOR is a quiet bridge between clients and creative teams. No bidding, no noise. Manual matching, direct communication, optional oversight.">
+  <!-- 网站图标 (Favicon) — 已按要求添加 -->
+  <link rel="icon" type="image/png" href="https://image.goaoxor.com/icon/websiteicon.png">
+  <!-- 字体优化：添加 display=swap 避免 FOIT/FOUT -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 – 添加安全属性与子资源完整性 (SRI) 示例；实际使用时建议替换为最新哈希值 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <style>
+    /* ---------- 全局变量与重置 ---------- */
+    :root {
+      --bg-main: #f8fafc;
+      --bg-soft: #eef2ff;
+      --card: rgba(255,255,255,0.95);
+      --card-hover: rgba(255,255,255,0.98);
+      --border: rgba(0,0,0,0.08);
+      --border-light: rgba(0,0,0,0.05);
+      --text-main: #0f172a;
+      --text-secondary: #1e293b;
+      --text-muted: #64748b;
+      --accent: #4f46e5;
+      --accent-light: #6366f1;
+      --accent-soft: rgba(79,70,229,0.08);
+      --accent-gradient: linear-gradient(135deg, #4f46e5, #6366f1);
+      --radius-sm: 8px;
+      --radius: 16px;
+      --radius-lg: 20px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 6px rgba(0,0,0,0.05);
+      --shadow-lg: 0 10px 25px rgba(0,0,0,0.08);
+      --shadow-xl: 0 20px 40px rgba(0,0,0,0.1);
+      --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* 尊重用户运动偏好 */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: linear-gradient(180deg, var(--bg-main) 0%, var(--bg-soft) 100%);
+      color: var(--text-main);
+      line-height: 1.6;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* 焦点轮廓增强可访问性 */
+    :focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    h1, h2, h3, h4 {
+      line-height: 1.2;
+      margin: 0;
+      font-weight: 700;
+    }
+
+    h1 { 
+      font-size: clamp(2.5rem, 5vw, 3.5rem); 
+      background: linear-gradient(135deg, #0f172a 0%, #4f46e5 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 1.5rem;
+    }
     
-    <!-- SEO 优化 -->
-    <title>GOAOXOR — 跨境创意制作服务平台 | 连接全球客户与中国精英创意团队</title>
-    <meta name="description" content="GOAOXOR 是全球领先的跨境创意制作平台，连接国际客户与中国顶尖的视频、动画和设计团队，以20%-50%的成本优势提供国际水准的创意服务。">
-    <meta name="keywords" content="创意制作,视频制作,动画设计,跨境协作,中国创意团队,国际创意服务">
+    h2 { 
+      font-size: clamp(1.75rem, 4vw, 2.5rem); 
+      margin-bottom: 2rem;
+      color: var(--text-secondary);
+    }
     
-    <!-- 预加载关键资源 -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-  </head>
-
-  <body class="gjs-t-body body-root">
-    <!-- 跳过导航链接 - 无障碍优化 -->
-    <a href="#main-content" class="skip-link">跳转到主要内容</a>
+    h3 { 
+      font-size: 1.5rem; 
+      margin-bottom: 1rem;
+      color: var(--text-secondary);
+    }
     
-    <!-- 导航栏 -->
-    <header class="header-navbar" role="banner">
-      <div class="navbar-container">
-        <div class="navbar-row">
-          <!-- 品牌标识 -->
-          <a href="#home" class="navbar-logo-link" aria-label="GOAOXOR 首页">
-            <div class="logo-mark logo-rect" aria-hidden="true">
-              <img src="https://app.grapesjs.com/api/assets/random-image?query=%22minimal%20rectangle%20logo%22&amp;w=240&amp;h=64" 
-                   alt="GOAOXOR Logo" 
-                   loading="eager" 
-                   width="120" 
-                   height="32"
-                   class="logo-icon">
-            </div>
-            <span class="logo-text">GOAOXOR</span>
-          </a>
+    h4 { 
+      font-size: 1.125rem; 
+      margin-bottom: 0.5rem;
+    }
+    
+    p { 
+      color: var(--text-muted); 
+      margin: 1rem 0;
+      line-height: 1.7;
+    }
 
-          <!-- 主导航 -->
-          <nav class="navbar-links nav-accordion" aria-label="主导航">
-            <div class="nav-acc-group">
-              <button type="button" 
-                      aria-expanded="false" 
-                      aria-controls="nav-services-panel" 
-                      class="nav-acc-btn">
-                Services
-                <img src="https://api.iconify.design/lucide-chevron-down.svg?color=%23334569" 
-                     alt="" 
-                     aria-hidden="true" 
-                     width="16" 
-                     height="16">
-              </button>
-              <div id="nav-services-panel" 
-                   role="menu" 
-                   aria-label="服务子菜单" 
-                   class="nav-submenu">
-                <a href="#home" role="menuitem" class="gjs-t-link">首页</a>
-                <a href="#teams" role="menuitem" class="gjs-t-link">经过认证的团队</a>
-                <a href="#services" role="menuitem" class="gjs-t-link">热门服务</a>
-              </div>
-            </div>
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition-fast);
+    }
 
-            <div class="nav-acc-group">
-              <button type="button" 
-                      aria-expanded="false" 
-                      aria-controls="nav-more-panel" 
-                      class="nav-acc-btn">
-                More
-                <img src="https://api.iconify.design/lucide-chevron-down.svg?color=%23334569" 
-                     alt="" 
-                     aria-hidden="true" 
-                     width="16" 
-                     height="16">
-              </button>
-              <div id="nav-more-panel" 
-                   role="menu" 
-                   aria-label="更多子菜单" 
-                   class="nav-submenu">
-                <a href="#submit" role="menuitem" class="gjs-t-link">提交项目</a>
-                <a href="#workflow" role="menuitem" class="gjs-t-link">工作流程</a>
-                <a href="#testimonials" role="menuitem" class="gjs-t-link">客户评价</a>
-                <a href="#faq" role="menuitem" class="gjs-t-link">FAQ</a>
-              </div>
-            </div>
-          </nav>
+    a:hover {
+      color: var(--accent-light);
+    }
 
-          <!-- 导航操作区域 -->
-          <div class="navbar-actions">
-            <!-- 语言选择 -->
-            <div class="lang-group">
-              <button type="button" 
-                      aria-expanded="false" 
-                      aria-controls="lang-panel" 
-                      id="lang-toggle" 
-                      class="lang-button nav-acc-btn">
-                English ∨
-              </button>
-              <div id="lang-panel" 
-                   role="menu" 
-                   aria-label="语言选项" 
-                   class="lang-panel">
-                <button type="button" 
-                        data-lang="en" 
-                        role="menuitem" 
-                        class="lang-option">
-                  English
-                  <img src="https://api.iconify.design/lucide-check.svg?color=%23cbd5e1" 
-                       alt="已选择" 
-                       aria-hidden="true" 
-                       width="16" 
-                       height="16">
-                </button>
-                <button type="button" 
-                        data-lang="zh" 
-                        role="menuitem" 
-                        class="lang-option">
-                  中文
-                  <img src="https://api.iconify.design/lucide-check.svg?color=%23cbd5e1" 
-                       alt="已选择" 
-                       aria-hidden="true" 
-                       width="16" 
-                       height="16">
-                </button>
-              </div>
-            </div>
+    .container {
+      max-width: 72rem;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      width: 100%;
+    }
 
-            <!-- 认证按钮 -->
-            <button type="button" class="auth-button">Login</button>
-            <button type="button" class="auth-button auth-primary">Register</button>
+    .section {
+      padding: 5rem 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-title p {
+      max-width: 36rem;
+      margin: 0 auto;
+      font-size: 1.125rem;
+    }
+
+    /* ---------- 卡片组件 ---------- */
+    .card {
+      background: var(--card);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--accent-gradient);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: var(--transition);
+    }
+
+    .card:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-5px);
+      background: var(--card-hover);
+    }
+
+    .card:hover::before {
+      transform: scaleX(1);
+    }
+
+    /* ---------- 网格系统 ---------- */
+    .grid {
+      display: grid;
+      gap: 2rem;
+    }
+
+    .grid-2 { 
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    }
+    
+    .grid-3 { 
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    }
+
+    /* ---------- 按钮 ---------- */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1.25rem;
+      padding: 1rem 2.25rem;
+      border-radius: var(--radius);
+      background: var(--accent-gradient);
+      color: white;
+      font-weight: 600;
+      box-shadow: 0 10px 30px rgba(79,70,229,0.25);
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      font-size: 1rem;
+    }
+
+    .btn::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255,255,255,0.1);
+      transform: translateX(-100%);
+      transition: var(--transition);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px rgba(79,70,229,0.3);
+    }
+
+    .btn:hover::after {
+      transform: translateX(100%);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: var(--accent);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-soft);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* ---------- 页面区块 ---------- */
+    .hero {
+      text-align: center;
+      padding: 8rem 0 6rem;
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 20% 50%, rgba(79,70,229,0.05) 0%, transparent 50%);
+      z-index: -1;
+    }
+
+    .hero p {
+      max-width: 45rem;
+      margin: 1.5rem auto 2.5rem;
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 2rem;
+      justify-content: center;
+    }
+
+    .tag {
+      padding: 0.75rem 1.5rem;
+      border-radius: 999px;
+      font-size: 0.875rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      transition: var(--transition);
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    .tag:hover {
+      background: white;
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+
+    .trust-strip {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin: 2rem auto 4rem;
+      max-width: 800px;
+      padding: 1.5rem;
+      background: var(--card);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-md);
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+
+    .trust-item i {
+      color: var(--accent);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .service-tag {
+      padding: 1rem;
+      background: var(--bg-soft);
+      border-radius: var(--radius);
+      text-align: center;
+      font-weight: 500;
+      color: var(--text-secondary);
+      border: 1px solid var(--border-light);
+      transition: var(--transition-fast);
+    }
+
+    .service-tag:hover {
+      background: white;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* ---------- 流程时间轴 ---------- */
+    .timeline {
+      position: relative;
+      padding-left: 2.5rem;
+      margin-top: 2.5rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 1.25rem;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      border-radius: 2px;
+      background: var(--accent-gradient);
+    }
+
+    .step {
+      position: relative;
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .dot {
+      width: 2.5rem;
+      height: 2.5rem;
+      background: var(--accent-gradient);
+      color: white;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 2.5rem;
+      font-weight: 700;
+      box-shadow: 0 8px 20px rgba(79,70,229,0.4);
+      flex-shrink: 0;
+      z-index: 1;
+    }
+
+    /* ---------- 价格卡片 ---------- */
+    .price {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin: 0.75rem 0;
+      color: var(--accent);
+    }
+
+    /* ---------- 高亮区域 ---------- */
+    .highlight {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      background: linear-gradient(135deg, #e0e7ff, #ede9fe);
+      padding: 3rem;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-xl);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .highlight::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 200px;
+      height: 200px;
+      background: url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M100 0C44.77 0 0 44.77 0 100C0 155.23 44.77 200 100 200C155.23 200 200 155.23 200 100C200 44.77 155.23 0 100 0ZM100 180C55.82 180 20 144.18 20 100C20 55.82 55.82 20 100 20C144.18 20 180 55.82 180 100C180 144.18 144.18 180 100 180Z' fill='%234f46e5' fill-opacity='0.05'/%3E%3C/svg%3E");
+      background-size: contain;
+      z-index: 0;
+    }
+
+    .highlight .icon {
+      font-size: 3rem;
+      z-index: 1;
+    }
+
+    .highlight > div {
+      z-index: 1;
+    }
+
+    /* ---------- FAQ 手风琴 ---------- */
+    .faq-item {
+      padding: 1.5rem;
+      border-bottom: 1px solid var(--border-light);
+      transition: var(--transition-fast);
+    }
+
+    .faq-item:first-child {
+      border-top: 1px solid var(--border-light);
+    }
+
+    .faq-item:hover {
+      background: rgba(255,255,255,0.5);
+    }
+
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .faq-toggle {
+      font-size: 1.25rem;
+      color: var(--accent);
+      transition: var(--transition);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+      color: var(--text-muted);
+      padding-right: 1rem;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 200px;
+      margin-top: 1rem;
+    }
+
+    .faq-item.active .faq-toggle {
+      transform: rotate(45deg);
+    }
+
+    /* ---------- 顶部公告栏 ---------- */
+    .top-bar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: var(--accent-gradient);
+      color: #fff;
+      text-align: center;
+      padding: 0.75rem 0;
+      font-size: 0.875rem;
+      z-index: 1000;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      box-shadow: 0 2px 10px rgba(79,70,229,0.2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #topBarMessage {
+      margin-right: 2rem;
+    }
+
+    .close-top-bar {
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+      font-size: 1.5rem;
+      line-height: 1;
+      opacity: 0.8;
+      transition: var(--transition-fast);
+      padding: 0 0.5rem;
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .close-top-bar:hover {
+      opacity: 1;
+    }
+
+    /* ---------- 模态框 ---------- */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      visibility: hidden;
+      opacity: 0;
+      transition: var(--transition);
+      z-index: 2000;
+      backdrop-filter: blur(4px);
+    }
+
+    .modal-overlay.active {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .modal {
+      background: #fff;
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      max-width: 28rem;
+      width: 90%;
+      text-align: center;
+      box-shadow: var(--shadow-xl);
+      transform: translateY(20px) scale(0.95);
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .modal-overlay.active .modal {
+      transform: translateY(0) scale(1);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition-fast);
+      z-index: 10;
+    }
+
+    .modal-close:hover {
+      background: rgba(0,0,0,0.05);
+      color: var(--text-main);
+    }
+
+    .modal-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 2rem;
+      align-items: center;
+    }
+
+    .modal-btn {
+      width: 100%;
+      max-width: 20rem;
+    }
+
+    .modal-remind {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 0.875rem;
+      text-decoration: underline;
+      transition: var(--transition-fast);
+    }
+
+    .modal-remind:hover {
+      color: var(--accent);
+    }
+
+    /* ---------- 社交证明 ---------- */
+    .social-proof {
+      text-align: center;
+      padding: 3rem 0;
+    }
+
+    .social-proof p {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      font-style: italic;
+    }
+
+    /* ---------- CTA 区域 ---------- */
+    .cta-section {
+      text-align: center;
+      padding: 4rem 0;
+      background: linear-gradient(135deg, rgba(79,70,229,0.05), rgba(99,102,241,0.05));
+      border-radius: var(--radius-lg);
+      margin: 4rem 0;
+    }
+
+    .cta-section h2 {
+      margin-bottom: 1rem;
+    }
+
+    .cta-section p {
+      max-width: 600px;
+      margin: 0 auto 2rem;
+    }
+
+    /* ---------- 页脚 ---------- */
+    footer {
+      padding: 3rem 1.5rem;
+      text-align: center;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+      background: rgba(255,255,255,0.8);
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      background: var(--accent-soft);
+      color: var(--accent);
+      transition: var(--transition);
+    }
+
+    .social-links a:hover {
+      background: var(--accent-gradient);
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin: 1.5rem 0;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+
+    ul {
+      padding-left: 1.25rem;
+      margin: 1rem 0;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+      color: var(--text-muted);
+    }
+
+    .note {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      font-style: italic;
+      margin-top: 1rem;
+    }
+
+    /* ---------- 动画 ---------- */
+    .fade-in {
+      animation: fadeIn 0.8s ease-out;
+    }
+
+    .slide-up {
+      animation: slideUp 0.6s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ---------- 响应式设计 ---------- */
+    @media (max-width: 768px) {
+      .section {
+        padding: 3rem 0;
+      }
+      
+      .pricing-section.container {
+        padding: 0 2rem;
+      }
+
+      .hero {
+        padding: 6rem 0 4rem;
+      }
+      
+      .grid-2, .grid-3 {
+        grid-template-columns: 1fr;
+      }
+      
+      .highlight {
+        flex-direction: column;
+        padding: 2rem;
+        text-align: center;
+      }
+      
+      .timeline {
+        padding-left: 1.5rem;
+      }
+      
+      .step {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      .timeline::before {
+        left: 0.75rem;
+      }
+      
+      .dot {
+        width: 2rem;
+        height: 2rem;
+        line-height: 2rem;
+      }
+      
+      .trust-strip {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem;
+      }
+      
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+      }
+      
+      .service-tag {
+        padding: 0.75rem;
+        font-size: 0.875rem;
+      }
+      
+      .modal {
+        padding: 2.5rem 1.5rem 2rem;
+      }
+      
+      .faq-item {
+        padding: 1rem;
+      }
+      
+      .card {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 顶部公告栏 - 优化轮播逻辑，不再重建DOM -->
+  <div class="top-bar" id="topBar">
+    <span id="topBarMessage">We take on fewer projects to keep coordination clear.</span>
+    <button class="close-top-bar" id="closeTopBar" aria-label="关闭公告">×</button>
+  </div>
+
+  <!-- 主要内容区，使用语义化main标签 -->
+  <main>
+    <!-- Hero 区块，保留初始淡入动画 -->
+    <section class="hero container fade-in">
+      <h1>A calm way to get creative work done.</h1>
+      <p>Not a marketplace. Not an agency.</p>
+      <p>Just a quiet bridge between people who need creative work — and teams who know how to deliver it.</p>
+      <div class="tags">
+        <span class="tag">You don't enjoy bidding, pitching, or endless profiles</span>
+        <span class="tag">You care more about clarity than "creative hype"</span>
+        <span class="tag">You want the work done properly, not loudly</span>
+      </div>
+      <div style="margin-top: 3rem;">
+        <!-- 统一所有CTA链接为同一目标，避免混淆 -->
+        <a href="https://form.goaoxor.com" class="btn">👉 Match Me With a Team — $49</a>
+        <p class="note">Usually enough for most projects · No commitment after matching</p>
+      </div>
+      <div style="margin-top: 1rem;">
+        <a href="#how-it-works" class="btn btn-secondary">How it works →</a>
+      </div>
+    </section>
+
+    <!-- 信任条，去除初始动画类，由滚动触发 -->
+    <section class="container">
+      <div class="trust-strip animate-on-scroll">
+        <div class="trust-item"><i class="fas fa-check" aria-hidden="true"></i> Manually screened teams</div>
+        <div class="trust-item"><i class="fas fa-check" aria-hidden="true"></i> Direct communication with creators</div>
+        <div class="trust-item"><i class="fas fa-check" aria-hidden="true"></i> Optional light supervision</div>
+        <div class="trust-item"><i class="fas fa-check" aria-hidden="true"></i> No platform lock-in</div>
+      </div>
+    </section>
+
+    <!-- 是什么/不是什么 -->
+    <section class="section container">
+      <div class="section-title animate-on-scroll">
+        <h2>What This Is (and Isn't)</h2>
+      </div>
+      <div class="grid grid-2">
+        <div class="card animate-on-scroll">
+          <h3><i class="fas fa-check-circle" style="color: var(--accent); margin-right: 0.5rem;" aria-hidden="true"></i> What GOAOXOR is</h3>
+          <ul>
+            <li>A human-guided matching service</li>
+            <li>Focused on video, design, animation, and digital creative</li>
+            <li>Built for clients who already know what they're trying to achieve</li>
+          </ul>
+        </div>
+        <div class="card animate-on-scroll" style="animation-delay: 0.1s;">
+          <h3><i class="fas fa-times-circle" style="color: #ef4444; margin-right: 0.5rem;" aria-hidden="true"></i> What GOAOXOR is not</h3>
+          <ul>
+            <li>❌ Not a freelancer marketplace</li>
+            <li>❌ Not a bidding platform</li>
+            <li>❌ Not a managed agency taking control away from you</li>
+          </ul>
+        </div>
+      </div>
+      <div style="text-align: center; margin-top: 2rem;">
+        <p style="font-size: 1.125rem; color: var(--text-secondary);">You work directly with the team. We stay in the background.</p>
+      </div>
+    </section>
+
+    <!-- 服务领域 -->
+    <section class="section container">
+      <div class="section-title animate-on-scroll">
+        <h2>What We Help With</h2>
+      </div>
+      <div class="services-grid">
+        <div class="service-tag">Video Production & Editing</div>
+        <div class="service-tag">Animation & Motion Design</div>
+        <div class="service-tag">Branding & Visual Identity</div>
+        <div class="service-tag">UI/UX & Web Design</div>
+        <div class="service-tag">Short-form content for social platforms</div>
+      </div>
+      <div style="text-align: center; margin-top: 2rem;">
+        <p>If it involves creative delivery, we can usually help — even if the brief isn't perfect yet.</p>
+      </div>
+    </section>
+
+    <!-- 工作流程 -->
+    <section class="section container" id="how-it-works">
+      <div class="section-title animate-on-scroll">
+        <h2>How It Works</h2>
+        <p>Real process, no fluff</p>
+      </div>
+      <div class="timeline">
+        <div class="step animate-on-scroll">
+          <div class="dot">1</div>
+          <div class="card">
+            <h3>Tell us what you're trying to achieve</h3>
+            <p>Not just what you want made — but why. A few sentences is enough.</p>
+          </div>
+        </div>
+        <div class="step animate-on-scroll" style="animation-delay: 0.1s;">
+          <div class="dot">2</div>
+          <div class="card">
+            <h3>We translate & match</h3>
+            <p>We clarify the brief, then match you with 1–2 suitable teams based on experience, style, and communication fit.</p>
+          </div>
+        </div>
+        <div class="step animate-on-scroll" style="animation-delay: 0.2s;">
+          <div class="dot">3</div>
+          <div class="card">
+            <h3>You talk directly</h3>
+            <p>No middle layers. You communicate directly with the team. We stay available in the background if needed.</p>
+          </div>
+        </div>
+        <div class="step animate-on-scroll" style="animation-delay: 0.3s;">
+          <div class="dot">4</div>
+          <div class="card">
+            <h3>Work moves forward in stages</h3>
+            <p>Milestones, previews, revisions — no surprises at the end.</p>
           </div>
         </div>
       </div>
-    </header>
+    </section>
 
-    <!-- 主要内容 -->
-    <main id="main-content" class="main-content">
-      <!-- Hero 区域 -->
-      <section id="home" class="hero-section" aria-labelledby="hero-title">
-        <div class="hero-parallax-layer" aria-hidden="true"></div>
-        <div class="hero-container">
-          <div class="hero-grid">
-            <div class="hero-left">
-              <div class="hero-card reveal">
-                <h1 id="hero-title" data-i18n="hero.title" class="gjs-t-h1 hero-title">
-                  全球跨境创意制作，一站式高效协作
-                </h1>
-                <p data-i18n="hero.subtitle" class="hero-subtitle">
-                  在 GOAOXOR 寻找经过审核的中国精英团队，完成视频、动画与设计项目，以 20%-50% 的成本优势获得国际水准成果。
-                </p>
-                <ul class="hero-bullets-list" aria-label="平台优势">
-                  <li class="hero-bullet-item">
-                    <img src="https://api.iconify.design/lucide-check-circle.svg?color=%2322c55e" 
-                         alt="" 
-                         class="icon-check" 
-                         aria-hidden="true">
-                    <span data-i18n="hero.point1" class="hero-bullet-text">仅为成功匹配支付费用</span>
-                  </li>
-                  <li class="hero-bullet-item">
-                    <img src="https://api.iconify.design/lucide-users.svg?color=%23a3e635" 
-                         alt="" 
-                         class="icon-users" 
-                         aria-hidden="true">
-                    <span data-i18n="hero.point2" class="hero-bullet-text">有效团队匹配</span>
-                  </li>
-                  <li class="hero-bullet-item">
-                    <img src="https://api.iconify.design/lucide-shield-check.svg?color=%238b5cf6" 
-                         alt="" 
-                         class="icon-shield" 
-                         aria-hidden="true">
-                    <span data-i18n="hero.point3" class="hero-bullet-text">全程监督项目保证</span>
-                  </li>
-                </ul>
-                <div class="hero-buttons">
-                  <a href="#submit" class="gjs-t-button primary-button">
-                    <span data-i18n="hero.cta">🚀 1 分钟开始</span>
-                  </a>
-                  <a href="#video" class="secondary-button">
-                    <img src="https://api.iconify.design/lucide-play-circle.svg?color=%23e5e7eb" 
-                         alt="" 
-                         class="icon-play" 
-                         aria-hidden="true">
-                    <span data-i18n="hero.watch">了解平台</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="hero-right">
-              <div class="hero-stats-grid">
-                <div class="stat-card reveal" style="animation-delay: 0.1s">
-                  <span class="stat-number">500+</span>
-                  <span data-i18n="hero.stat1" class="stat-label">Projects Delivered</span>
-                </div>
-                <div class="stat-card reveal" style="animation-delay: 0.2s">
-                  <span class="stat-number">120+</span>
-                  <span data-i18n="hero.stat2" class="stat-label">Certified Teams</span>
-                </div>
-                <div class="stat-card reveal" style="animation-delay: 0.3s">
-                  <span class="stat-number">$500k+</span>
-                  <span data-i18n="hero.stat3" class="stat-label">Client Savings</span>
-                </div>
-              </div>
-            </div>
-          </div>
+    <!-- 定价 -->
+    <section class="section pricing-section container">
+      <div class="section-title animate-on-scroll">
+        <h2>Pricing</h2>
+        <p>Simple, clear, upfront</p>
+      </div>
+      <div class="grid grid-2">
+        <div class="card animate-on-scroll">
+          <h3>Team Matching</h3>
+          <div class="price">$49</div>
+          <p>This is the starting point for almost all projects.</p>
+          <ul>
+            <li>Brief clarification</li>
+            <li>Manual team selection</li>
+            <li>1–2 suitable teams introduced</li>
+            <li>Direct contact with creators</li>
+          </ul>
+          <p class="note">👉 Most clients stop here.</p>
         </div>
-      </section>
-
-      <!-- 认证团队区域 -->
-      <section id="teams" class="certified-teams-section" aria-labelledby="teams-title">
-        <div class="teams-container">
-          <div class="teams-header">
-            <h2 id="teams-title" data-i18n="teams.title" class="gjs-t-h2 section-title">经过认证的团队</h2>
-            <a href="#submit" data-i18n="teams.cta" class="gjs-t-link section-action">需要帮助选择？联系我们</a>
-          </div>
-          <div class="teams-grid">
-            <a href="team-film.html" class="team-category-card reveal">
-              <span data-i18n="teams.c1" class="category-label">影视与视频</span>
-            </a>
-            <a href="team-animation.html" class="team-category-card reveal">
-              <span data-i18n="teams.c2" class="category-label">动画</span>
-            </a>
-            <a href="team-visual.html" class="team-category-card reveal">
-              <span data-i18n="teams.c3" class="category-label">视觉与设计</span>
-            </a>
-            <a href="team-ecommerce.html" class="team-category-card reveal">
-              <span data-i18n="teams.c4" class="category-label">电商</span>
-            </a>
-            <a href="team-more.html" class="team-category-card reveal">
-              <span data-i18n="teams.c5" class="category-label">更多</span>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <!-- 热门服务区域 -->
-      <section id="services" class="popular-services-section" aria-labelledby="services-title">
-        <div class="services-container">
-          <div class="services-header">
-            <h2 id="services-title" data-i18n="services.title" class="gjs-t-h2 section-title">热门服务</h2>
-            <div class="carousel-controls">
-              <button type="button" data-control="prev" class="carousel-prev" aria-label="上一个服务">
-                <img src="https://api.iconify.design/lucide-chevron-left.svg?color=%23e5e7eb" 
-                     alt="" 
-                     class="icon-prev" 
-                     aria-hidden="true">
-              </button>
-              <button type="button" data-control="next" class="carousel-next" aria-label="下一个服务">
-                <img src="https://api.iconify.design/lucide-chevron-right.svg?color=%23e5e7eb" 
-                     alt="" 
-                     class="icon-next" 
-                     aria-hidden="true">
-              </button>
-            </div>
-          </div>
-          <div class="carousel-viewport">
-            <div class="carousel-track">
-              <article class="service-card reveal">
-                <img src="https://app.grapesjs.com/api/assets/random-image?query=%22product%20video%22&amp;w=640&amp;h=420" 
-                     alt="产品宣传视频制作案例" 
-                     loading="lazy" 
-                     class="service-image">
-                <div class="service-content">
-                  <h3 data-i18n="services.s1.title" class="service-title">产品宣传视频</h3>
-                  <div class="service-meta">
-                    <span data-i18n="services.s1.projects">完成 120+</span>
-                    <span class="service-rating">
-                      <img src="https://api.iconify.design/lucide-star.svg?color=%23fbbf24" 
-                           alt="评分" 
-                           class="icon-star" 
-                           aria-hidden="true">
-                      <span>4.9</span>
-                    </span>
-                  </div>
-                </div>
-              </article>
-              
-              <article class="service-card reveal">
-                <img src="https://app.grapesjs.com/api/assets/random-image?query=%22explainer%20animation%22&amp;w=640&amp;h=420" 
-                     alt="2D/3D解说动画制作案例" 
-                     loading="lazy" 
-                     class="service-image">
-                <div class="service-content">
-                  <h3 data-i18n="services.s2.title" class="service-title">2D/3D 解说动画</h3>
-                  <div class="service-meta">
-                    <span data-i18n="services.s2.projects">完成 200+</span>
-                    <span class="service-rating">
-                      <img src="https://api.iconify.design/lucide-star.svg?color=%23fbbf24" 
-                           alt="评分" 
-                           class="icon-star" 
-                           aria-hidden="true">
-                      <span>4.8</span>
-                    </span>
-                  </div>
-                </div>
-              </article>
-              
-              <article class="service-card reveal">
-                <img src="https://app.grapesjs.com/api/assets/random-image?query=%22ui%20design%22&amp;w=640&amp;h=420" 
-                     alt="品牌与视觉设计案例" 
-                     loading="lazy" 
-                     class="service-image">
-                <div class="service-content">
-                  <h3 data-i18n="services.s3.title" class="service-title">品牌与视觉设计</h3>
-                  <div class="service-meta">
-                    <span data-i18n="services.s3.projects">完成 150+</span>
-                    <span class="service-rating">
-                      <img src="https://api.iconify.design/lucide-star.svg?color=%23fbbf24" 
-                           alt="评分" 
-                           class="icon-star" 
-                           aria-hidden="true">
-                      <span>4.9</span>
-                    </span>
-                  </div>
-                </div>
-              </article>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 提交项目区域 -->
-      <section id="submit" class="submit-project-section" aria-labelledby="submit-title">
-        <div class="submit-container">
-          <div class="submit-card">
-            <div class="submit-grid">
-              <div class="submit-left">
-                <h2 id="submit-title" data-i18n="submit.title" class="gjs-t-h2 section-title">提交你的项目</h2>
-                <p data-i18n="submit.desc" class="section-paragraph">
-                  GOAOXOR 通过严格审核与智能匹配，快速为您推荐最合适的创意团队。平台全程透明跟进，确保按时按质交付。
-                </p>
-                <div class="submit-buttons">
-                  <a href="#workflow" class="gjs-t-button primary-button">
-                    <span data-i18n="submit.cta">立即开始</span>
-                  </a>
-                  <a href="#faq" class="secondary-button">
-                    <img src="https://api.iconify.design/lucide-help-circle.svg?color=%23334569" 
-                         alt="" 
-                         class="icon-help" 
-                         aria-hidden="true">
-                    <span data-i18n="submit.help">有问题？查看 FAQ</span>
-                  </a>
-                </div>
-              </div>
-              <div class="submit-right">
-                <div class="illustration-wrapper">
-                  <img src="https://app.grapesjs.com/api/assets/random-image?query=%22creative%20team%20illustration%22&amp;w=1100&amp;h=700" 
-                       alt="创意团队协作插图" 
-                       loading="lazy" 
-                       class="illustration-image">
-                </div>
-              </div>
-            </div>
-            <div class="submit-advantages-grid">
-              <div class="advantage-card reveal">
-                <div class="advantage-header">
-                  <img src="https://api.iconify.design/lucide-bolt.svg?color=%2381e6d9" 
-                       alt="" 
-                       class="icon-bolt" 
-                       aria-hidden="true">
-                  <h3 data-i18n="submit.a1.title" class="advantage-title">快速匹配团队</h3>
-                </div>
-                <p data-i18n="submit.a1.desc" class="advantage-text">48 小时内给出候选团队，快速推进项目。</p>
-              </div>
-              <div class="advantage-card reveal">
-                <div class="advantage-header">
-                  <img src="https://api.iconify.design/lucide-badge-check.svg?color=%2381e6d9" 
-                       alt="" 
-                       class="icon-check" 
-                       aria-hidden="true">
-                  <h3 data-i18n="submit.a2.title" class="advantage-title">专家顾问支持</h3>
-                </div>
-                <p data-i18n="submit.a2.desc" class="advantage-text">项目顾问全程陪伴，需求澄清、风险预警。</p>
-              </div>
-              <div class="advantage-card reveal">
-                <div class="advantage-header">
-                  <img src="https://api.iconify.design/lucide-shield.svg?color=%2381e6d9" 
-                       alt="" 
-                       class="icon-shield" 
-                       aria-hidden="true">
-                  <h3 data-i18n="submit.a3.title" class="advantage-title">安全与认证</h3>
-                </div>
-                <p data-i18n="submit.a3.desc" class="advantage-text">严格审核与合规合同，保障资金与交付。</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 工作流程区域 -->
-      <section id="workflow" class="workflow-section" aria-labelledby="workflow-title">
-        <div class="workflow-container">
-          <h2 id="workflow-title" data-i18n="workflow.title" class="gjs-t-h2 section-title">工作流程</h2>
-          <div class="workflow-grid">
-            <div class="workflow-step reveal">
-              <div class="step-header">
-                <img src="https://api.iconify.design/lucide-file-plus-2.svg?color=%2399f6e4" 
-                     alt="" 
-                     class="step-icon" 
-                     aria-hidden="true">
-                <h3 data-i18n="workflow.s1.title" class="step-title">客户提交项目需求</h3>
-              </div>
-              <p data-i18n="workflow.s1.desc" class="step-description">填写目标、预算与时间表，上传参考资料。</p>
-            </div>
-            <div class="workflow-step reveal">
-              <div class="step-header">
-                <img src="https://api.iconify.design/lucide-filter.svg?color=%2399f6e4" 
-                     alt="" 
-                     class="step-icon" 
-                     aria-hidden="true">
-                <h3 data-i18n="workflow.s2.title" class="step-title">平台筛选团队</h3>
-              </div>
-              <p data-i18n="workflow.s2.desc" class="step-description">基于领域经验与可用性进行筛选与尽调。</p>
-            </div>
-            <div class="workflow-step reveal">
-              <div class="step-header">
-                <img src="https://api.iconify.design/lucide-heart-handshake.svg?color=%2399f6e4" 
-                     alt="" 
-                     class="step-icon" 
-                     aria-hidden="true">
-                <h3 data-i18n="workflow.s3.title" class="step-title">推荐匹配团队</h3>
-              </div>
-              <p data-i18n="workflow.s3.desc" class="step-description">提供 2-3 个候选，与客户进行初次沟通。</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- FAQ 区域 -->
-      <section id="faq" class="faq-section" aria-labelledby="faq-title">
-        <div class="faq-container">
-          <h2 id="faq-title" data-i18n="faq.title" class="gjs-t-h2 section-title">常见问题</h2>
-          <div class="faq-list">
-            <div class="faq-item" aria-expanded="false">
-              <button type="button" class="faq-question-button">
-                <span data-i18n="faq.q1.q" class="faq-question">如何开始项目并匹配团队？</span>
-                <img src="https://api.iconify.design/lucide-plus.svg?color=%23e5e7eb" 
-                     alt="展开/收起" 
-                     class="faq-toggle-icon" 
-                     aria-hidden="true">
-              </button>
-              <div class="faq-answer">
-                <p data-i18n="faq.q1.a">
-                  点击"立即开始"，提交需求，48 小时内收到候选团队，与之沟通后选择最合适的团队。
-                </p>
-              </div>
-            </div>
-            <div class="faq-item" aria-expanded="false">
-              <button type="button" class="faq-question-button">
-                <span data-i18n="faq.q2.q" class="faq-question">费用如何计算？是否有隐藏收费？</span>
-                <img src="https://api.iconify.design/lucide-plus.svg?color=%23e5e7eb" 
-                     alt="展开/收起" 
-                     class="faq-toggle-icon" 
-                     aria-hidden="true">
-              </button>
-              <div class="faq-answer">
-                <p data-i18n="faq.q2.a">
-                  平台不收订阅费，仅对成功匹配的项目收取透明服务费，无任何隐藏费用。
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <!-- 页脚 -->
-    <footer class="footer" role="contentinfo">
-      <div class="footer-container">
-        <div class="footer-grid">
-          <div class="footer-col">
-            <h4 data-i18n="footer.about.title" class="footer-title">关于 GOAOXOR</h4>
-            <p data-i18n="footer.about.desc" class="footer-text">
-              GOAOXOR 连接全球客户与中国精英创意团队，专注影视、动画与视频项目，以更低成本交付国际品质。
-            </p>
-          </div>
-          <div class="footer-col">
-            <h4 data-i18n="footer.explore.title" class="footer-title">探索</h4>
-            <ul class="footer-links-list" aria-label="网站导航">
-              <li><a href="#teams" data-i18n="footer.explore.teams" class="gjs-t-link footer-link">经过认证的团队</a></li>
-              <li><a href="#services" data-i18n="footer.explore.popular" class="gjs-t-link footer-link">热门服务</a></li>
-              <li><a href="#submit" data-i18n="footer.explore.submit" class="gjs-t-link footer-link">提交项目</a></li>
-              <li><a href="#workflow" data-i18n="footer.explore.workflow" class="gjs-t-link footer-link">工作流程</a></li>
-            </ul>
-          </div>
-          <div class="footer-col">
-            <h4 data-i18n="footer.connect.title" class="footer-title">联系我们</h4>
-            <div class="social-row">
-              <a href="mailto:hello@goaoxor.com" aria-label="发送邮件" class="social-button">
-                <img src="https://api.iconify.design/lucide-mail.svg?color=%23334569" 
-                     alt="" 
-                     class="social-icon" 
-                     aria-hidden="true">
-              </a>
-              <a href="#" aria-label="关注 TikTok" class="social-button">
-                <img src="https://api.iconify.design/lucide-music-4.svg?color=%23334569" 
-                     alt="" 
-                     class="social-icon" 
-                     aria-hidden="true">
-              </a>
-            </div>
-          </div>
-          <div class="footer-col">
-            <h4 data-i18n="footer.news.title" class="footer-title">订阅更新</h4>
-            <p data-i18n="footer.news.desc" class="footer-text">
-              订阅跨境创意制作与协作的洞见与案例。
-            </p>
-            <form method="get" class="newsletter-form" aria-label="订阅新闻通讯">
-              <label for="newsletter" class="newsletter-label">邮箱地址</label>
-              <input type="email" 
-                     id="newsletter" 
-                     required 
-                     placeholder="you@example.com" 
-                     class="newsletter-input"
-                     aria-describedby="newsletter-help">
-              <button type="submit" 
-                      data-i18n="footer.news.cta" 
-                      class="gjs-t-button newsletter-button">
-                立即加入
-              </button>
-              <div id="newsletter-help" class="visually-hidden">
-                我们承诺不会分享您的邮箱地址，您可以随时取消订阅。
-              </div>
-            </form>
-          </div>
-        </div>
-        <div class="footer-bottom">
-          <p data-i18n="footer.copyright" class="footer-copyright">© 2025 GOAOXOR. 保留所有权利。</p>
+        <div class="card animate-on-scroll" style="animation-delay: 0.1s;">
+          <h3>Optional Oversight</h3>
+          <div class="price">from $199</div>
+          <p>Only if you feel you need it.</p>
+          <p>Used when:</p>
+          <ul>
+            <li>The project is complex or high-stakes</li>
+            <li>You want progress monitoring</li>
+            <li>You want help resolving misalignment</li>
+          </ul>
+          <p class="note">This is not required and not pushed.</p>
         </div>
       </div>
-    </footer>
+    </section>
 
-    <script src="script.js"></script>
-  </body>
+    <!-- 高亮区：为什么只有一个管理计划 -->
+    <section class="section container">
+      <div class="highlight animate-on-scroll">
+        <div class="icon" aria-hidden="true">🛡️</div>
+        <div>
+          <h3>Why Only One Managed Plan?</h3>
+          <p>Because management should be earned, not forced. Most projects don't fail because of talent — they fail because of misalignment and unclear expectations.</p>
+          <p>We start light. We step in only if it actually helps. This keeps costs down, communication clean, and responsibility where it belongs.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 适合人群 -->
+    <section class="section container">
+      <div class="section-title animate-on-scroll">
+        <h2>Who This Is For (and Not For)</h2>
+      </div>
+      <div class="grid grid-2">
+        <div class="card animate-on-scroll">
+          <h3 style="color: #10b981;"><i class="fas fa-check" style="margin-right: 0.5rem;" aria-hidden="true"></i> GOAOXOR is for you if:</h3>
+          <ul>
+            <li>You value calm execution over speed theatrics</li>
+            <li>You want fewer options, chosen well</li>
+            <li>You prefer humans over algorithms</li>
+          </ul>
+        </div>
+        <div class="card animate-on-scroll" style="animation-delay: 0.1s;">
+          <h3 style="color: #ef4444;"><i class="fas fa-times" style="margin-right: 0.5rem;" aria-hidden="true"></i> This may not be for you if:</h3>
+          <ul>
+            <li>You want dozens of quotes to compare</li>
+            <li>You enjoy negotiating with freelancers</li>
+            <li>You expect instant results without clarity</li>
+          </ul>
+        </div>
+      </div>
+      <div style="text-align: center; margin-top: 2rem;">
+        <p style="font-style: italic;">That's okay. Not every model fits every project.</p>
+      </div>
+    </section>
+
+    <!-- 社交证明 -->
+    <section class="social-proof container animate-on-scroll">
+      <p>Most of our work comes from:</p>
+      <div class="tags" style="margin-top: 1rem;">
+        <span class="tag">Referrals</span>
+        <span class="tag">Repeat clients</span>
+        <span class="tag">Quiet recommendations</span>
+      </div>
+      <p style="margin-top: 1rem; font-size: 1rem;">We grow slowly on purpose.</p>
+    </section>
+
+    <!-- 行动召唤 -->
+    <section class="cta-section container animate-on-scroll">
+      <h2>Start with a simple match</h2>
+      <p>No sales calls. No pressure. Just enough information to see if this makes sense.</p>
+      <a href="https://form.goaoxor.com" class="btn">👉 Match Me With a Team — $49</a>
+      <p class="note">Usually takes under 5 minutes · You'll hear back within 24–48 hours</p>
+    </section>
+
+    <!-- FAQ 手风琴，添加 ARIA 增强可访问性 -->
+    <section class="section faq-section container">
+      <div class="section-title animate-on-scroll">
+        <h2>FAQ</h2>
+        <p>Clarifying these early usually helps.</p>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item animate-on-scroll">
+          <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
+            <h4>Do you take a cut from the project fee?</h4>
+            <span class="faq-toggle" aria-hidden="true">+</span>
+          </div>
+          <div class="faq-answer">No. You pay the team directly.</div>
+        </div>
+        <div class="faq-item animate-on-scroll" style="animation-delay: 0.1s;">
+          <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
+            <h4>Can I talk to the team before committing?</h4>
+            <span class="faq-toggle" aria-hidden="true">+</span>
+          </div>
+          <div class="faq-answer">Yes. That's the point.</div>
+        </div>
+        <div class="faq-item animate-on-scroll" style="animation-delay: 0.2s;">
+          <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
+            <h4>What if I'm not sure about my brief yet?</h4>
+            <span class="faq-toggle" aria-hidden="true">+</span>
+          </div>
+          <div class="faq-answer">That's common. We help you shape it.</div>
+        </div>
+        <div class="faq-item animate-on-scroll" style="animation-delay: 0.3s;">
+          <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
+            <h4>Is this cheaper than agencies?</h4>
+            <span class="faq-toggle" aria-hidden="true">+</span>
+          </div>
+          <div class="faq-answer">Usually, yes — but cost isn't the main advantage. Clarity is.</div>
+        </div>
+        <div class="faq-item animate-on-scroll" style="animation-delay: 0.4s;">
+          <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
+            <h4>What if it doesn't work out?</h4>
+            <span class="faq-toggle" aria-hidden="true">+</span>
+          </div>
+          <div class="faq-answer">You're not locked in. We don't hold your project hostage.</div>
+        </div>
+        <div class="faq-item animate-on-scroll" style="animation-delay: 0.5s;">
+          <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
+            <h4>Why not just use Upwork or Fiverr?</h4>
+            <span class="faq-toggle" aria-hidden="true">+</span>
+          </div>
+          <div class="faq-answer">If those work for you, great. GOAOXOR is for people who prefer fewer, better-filtered options.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 页脚，品牌名统一为大写 -->
+  <footer>
+    <div class="container">
+      <strong style="font-size: 1.5rem; color: var(--text-main); display: block; margin-bottom: 1rem;">GOAOXOR</strong>
+      <p style="margin-bottom: 1.5rem;">Quiet creative delivery</p>
+      <div class="social-links">
+        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok" aria-hidden="true"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+        <a href="mailto:support@goaoxor.com" aria-label="Email"><i class="fas fa-envelope" aria-hidden="true"></i></a>
+      </div>
+      <p style="margin: 1.5rem 0 0.5rem;">support@goaoxor.com</p>
+      <p>© 2026 GOAOXOR</p>
+    </div>
+  </footer>
+
+  <!-- 模态框，增加无障碍属性 -->
+  <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal">
+      <button class="modal-close" id="modalClose" aria-label="关闭">×</button>
+      <h3 id="modalTitle">A quick note before you continue</h3>
+      <p>We don't take on many projects at once.</p>
+      <p>If you're still exploring, unsure, or early-stage — that's completely fine.</p>
+      <p>If you need speed, volume, or bidding — this may not be the right place.</p>
+      <div class="modal-buttons">
+        <a href="https://form.goaoxor.com" class="btn modal-btn">👉 See if this fits your project</a>
+        <button class="modal-remind" id="remindLater">Continue to site →</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      "use strict";
+
+      // ---------- 统一配置 ----------
+      const TOP_BAR_MESSAGES = [
+        'We take on fewer projects to keep coordination clear.',
+        'Matching is done manually, not automatically.',
+        'Availability varies depending on project scope.'
+      ];
+      let msgIndex = 0;
+      let topBarInterval = null;
+
+      // ---------- 1. 顶部公告栏优化：消息轮播 + 关闭功能 ----------
+      const topBar = document.getElementById('topBar');
+      const topBarMessage = document.getElementById('topBarMessage');
+      const closeTopBar = document.getElementById('closeTopBar');
+
+      // 关闭顶部栏
+      closeTopBar.addEventListener('click', function() {
+        topBar.style.transform = 'translateY(-100%)';
+        topBar.style.opacity = '0';
+        if (topBarInterval) {
+          clearInterval(topBarInterval);
+          topBarInterval = null;
+        }
+        // 延迟隐藏避免闪烁
+        setTimeout(() => {
+          topBar.style.display = 'none';
+        }, 300);
+      });
+
+      // 消息轮播
+      function rotateMessage() {
+        if (!topBarMessage) return;
+        topBar.style.opacity = '0.5';
+        setTimeout(() => {
+          msgIndex = (msgIndex + 1) % TOP_BAR_MESSAGES.length;
+          topBarMessage.textContent = TOP_BAR_MESSAGES[msgIndex];
+          topBar.style.opacity = '1';
+        }, 200);
+      }
+      topBarInterval = setInterval(rotateMessage, 4000);
+
+      // ---------- 2. FAQ 手风琴：修复符号同步与 ARIA 状态 ----------
+      const faqItems = document.querySelectorAll('.faq-item');
+      faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        const toggle = item.querySelector('.faq-toggle');
+
+        // 初始化 ARIA 属性
+        if (question) {
+          question.setAttribute('aria-expanded', 'false');
+        }
+
+        question.addEventListener('click', function(e) {
+          e.preventDefault();
+          const isActive = item.classList.contains('active');
+
+          // 关闭所有其他项，并重置其符号和 aria-expanded
+          faqItems.forEach(otherItem => {
+            if (otherItem !== item) {
+              otherItem.classList.remove('active');
+              const otherToggle = otherItem.querySelector('.faq-toggle');
+              if (otherToggle) otherToggle.textContent = '+';
+              const otherQuestion = otherItem.querySelector('.faq-question');
+              if (otherQuestion) otherQuestion.setAttribute('aria-expanded', 'false');
+            }
+          });
+
+          // 切换当前项
+          item.classList.toggle('active');
+          if (toggle) {
+            toggle.textContent = item.classList.contains('active') ? '−' : '+';
+          }
+          if (question) {
+            question.setAttribute('aria-expanded', item.classList.contains('active'));
+          }
+        });
+
+        // 支持键盘 Enter/Space 激活
+        question.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            this.click();
+          }
+        });
+      });
+
+      // ---------- 3. 模态框：延迟弹出，键盘支持，不再重复弹出（本地存储持久化）----------
+      const modal = document.getElementById('modalOverlay');
+      const modalClose = document.getElementById('modalClose');
+      const remindLater = document.getElementById('remindLater');
+
+      // 检查是否已经关闭过（一天内不再显示）
+      const modalClosed = localStorage.getItem('goaoxor_modal_closed');
+      if (!modalClosed) {
+        setTimeout(() => {
+          modal.classList.add('active');
+        }, 2000); // 延长至2秒，体验更自然
+      }
+
+      function closeModal() {
+        modal.classList.remove('active');
+        // 记录关闭状态，有效期24小时（可选）
+        localStorage.setItem('goaoxor_modal_closed', Date.now());
+      }
+
+      modalClose.addEventListener('click', closeModal);
+      remindLater.addEventListener('click', closeModal);
+      
+      // 点击遮罩关闭
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+      });
+
+      // ESC 关闭
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+          closeModal();
+        }
+      });
+
+      // ---------- 4. 滚动触发动画：移除初始 slide-up 类，动态添加 ----------
+      const animatedElements = document.querySelectorAll('.animate-on-scroll');
+      
+      // 初始时确保没有 slide-up 类（防止预加载动画）
+      animatedElements.forEach(el => el.classList.remove('slide-up'));
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('slide-up');
+            // 一旦动画执行完毕，可以停止观察以提升性能
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -20px 0px' }); // 微调触发阈值
+
+      animatedElements.forEach(el => observer.observe(el));
+
+      // ---------- 5. 清理未使用的定时器 ----------
+      // 若用户非常快速地关闭顶部栏，轮播仍会尝试操作已隐藏的元素，但我们已经 clearInterval
+      // 无需额外处理
+
+      // ---------- 6. 统一外部链接：已将 pages.dev 全部替换为 form.goaoxor.com ----------
+      // 代码中已全部使用 https://form.goaoxor.com
+
+      // ---------- 7. 品牌名统一（HTML 已修正为 GOAOXOR）----------
+    })();
+  </script>
+</body>
 </html>
