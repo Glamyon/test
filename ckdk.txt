@@ -1,0 +1,689 @@
+export default {
+
+async fetch(request){
+
+
+const year =
+Number(new URL(request.url).searchParams.get("year"))
+||
+new Date().getFullYear();
+
+
+
+let events=[];
+
+
+
+// ======================
+// 世界节日
+// ======================
+
+events.push(
+
+event(year+"1224","平安夜","世界节日",
+"许多家庭在冬夜团聚，延续祝福和陪伴的传统。"),
+
+event(year+"1225","圣诞节","世界节日",
+"人们庆祝、赠礼、团聚，形成世界范围的文化节日。"),
+
+event(year+"1031","万圣节","世界节日",
+"源于古老传统，人们通过装扮和活动迎接秋季变化。"),
+
+event(
+thanksgiving(year),
+"感恩节",
+"世界节日",
+"人们聚在一起分享食物，表达感谢与团聚。"
+)
+
+);
+
+
+
+
+// ======================
+// 二十四节气
+// ======================
+
+events.push(
+...solarTerms(year)
+);
+
+
+
+
+// ======================
+// 农历节日
+// 后面完整算法提供
+// ======================
+
+events.push(
+...lunarFestival(year)
+);
+
+
+
+
+// ======================
+// 民众历史记忆
+// 可继续增加
+// ======================
+
+events.push(
+
+event(year+"0405",
+"清明祭祖",
+"民间习俗",
+"人们扫墓祭祖，表达对先人的追念。"
+),
+
+
+event(year+"0721",
+"陈胜吴广起义",
+"民众历史记忆",
+"秦末徭役沉重，一群普通士卒因误期将面临严惩，最终选择反抗。"
+),
+
+
+event(year+"0201",
+"黄巾起义",
+"民众历史记忆",
+"东汉末年灾荒频繁，许多人因生活困难加入太平道，希望寻找新的出路。"
+),
+
+
+event(year+"0901",
+"黄巢起义",
+"民众历史记忆",
+"唐末生活压力增加，许多人参与反抗，改变大量人的命运。"
+),
+
+
+event(year+"0101",
+"焚书坑儒",
+"文化记忆",
+"秦统一后，许多书籍受到破坏，许多人的命运因此改变。"
+),
+
+
+event(year+"0101",
+"造纸术传播",
+"文化记忆",
+"纸张让文字更容易保存和传播，改变知识记录方式。"
+)
+
+);
+
+
+
+
+// ======================
+// 生成ICS
+// ======================
+
+
+let ics =
+`BEGIN:VCALENDAR
+VERSION:2.0
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:华夏与世界文化日历
+X-WR-TIMEZONE:Asia/Shanghai
+`;
+
+
+
+for(const e of events){
+
+ics +=
+`
+BEGIN:VEVENT
+UID:${e.title}@calendar
+DTSTART;VALUE=DATE:${e.date}
+DTEND;VALUE=DATE:${nextDay(e.date)}
+SUMMARY:${e.title}
+DESCRIPTION:${escapeICS(e.desc)}
+CATEGORIES:${e.type}
+TRANSPARENT:TRUE
+END:VEVENT
+`;
+
+}
+
+
+ics+=`
+END:VCALENDAR`;
+
+
+
+return new Response(
+ics,
+{
+headers:{
+"Content-Type":"text/calendar;charset=utf-8",
+"Cache-Control":"public,max-age=86400"
+}
+}
+);
+
+
+}
+
+};
+
+
+
+
+// ======================
+// 基础函数
+// ======================
+
+
+function event(date,title,type,desc){
+
+return {
+title,
+date,
+type,
+desc
+};
+
+}
+
+
+
+function nextDay(date){
+
+let d=new Date(
+Date.UTC(
+Number(date.slice(0,4)),
+Number(date.slice(4,6))-1,
+Number(date.slice(6,8))
+)
+);
+
+d.setUTCDate(d.getUTCDate()+1);
+
+return format(d);
+
+}
+
+
+
+function format(d){
+
+return d.getFullYear()
++
+String(d.getMonth()+1).padStart(2,"0")
++
+String(d.getDate()).padStart(2,"0");
+
+}
+
+
+
+function escapeICS(t){
+
+return t
+.replace(/,/g,"\\,")
+.replace(/;/g,"\\;")
+.replace(/\n/g,"\\n");
+
+}
+
+
+
+
+function thanksgiving(y){
+
+let d=new Date(y,10,1);
+let count=0;
+
+while(true){
+
+if(d.getDay()==4){
+
+count++;
+
+if(count==4)break;
+
+}
+
+d.setDate(d.getDate()+1);
+
+}
+
+return format(d);
+
+}
+
+
+
+// ======================
+// 二十四节气算法
+// ======================
+
+
+const terms=[
+"小寒","大寒",
+"立春","雨水",
+"惊蛰","春分",
+"清明","谷雨",
+"立夏","小满",
+"芒种","夏至",
+"小暑","大暑",
+"立秋","处暑",
+"白露","秋分",
+"寒露","霜降",
+"立冬","小雪",
+"大雪","冬至"
+];
+
+
+const termInfo=[
+0,21208,42467,63836,85337,
+107014,128867,150921,
+172177,193506,215022,
+236563,258118,279717,
+301265,322792,344327,
+365868,387409,408920,
+430397,451839,473242,
+494688
+];
+
+
+function solarTerms(y){
+
+let result=[];
+
+for(let i=0;i<24;i++){
+
+let d=
+new Date(
+31556925974.7*(y-1900)
++
+termInfo[i]*60000
++
+Date.UTC(1900,0,6,2,5)
+);
+
+
+result.push({
+
+title:terms[i],
+date:format(d),
+type:"节气",
+desc:
+`古人观察季节变化，${terms[i]}代表一年中的重要时间节点。`
+
+});
+
+}
+
+
+return result;
+
+}
+
+// ======================
+// 农历算法
+// ======================
+
+
+const lunarInfo=[
+
+0x04bd8,0x04ae0,0x0a570,0x054d5,
+0x0d260,0x0d950,0x16554,0x056a0,
+0x09ad0,0x055d2,0x04ae0,0x0a5b6,
+0x0a4d0,0x0d250,0x1d255,0x0b540,
+0x0d6a0,0x0ada2,0x095b0,0x14977,
+0x04970,0x0a4b0,0x0b4b5,0x06a50,
+0x06d40,0x1ab54,0x02b60,0x09570,
+0x052f2,0x04970,0x06566,0x0d4a0,
+0x0ea50,0x06e95,0x05ad0,0x02b60,
+0x186e3,0x092e0,0x1c8d7,0x0c950,
+0x0d4a0,0x1d8a6,0x0b550,0x056a0,
+0x1a5b4,0x025d0,0x092d0,0x0d2b2,
+0x0a950,0x0b557,0x06ca0,0x0b550,
+0x15355,0x04da0,0x0a5d0,0x14573,
+0x052d0,0x0a9a8,0x0e950,0x06aa0,
+0x0aea6,0x0ab50,0x04b60,0x0aae4,
+0x0a570,0x05260,0x0f263,0x0d950,
+0x05b57,0x056a0,0x096d0,0x04dd5,
+0x04ad0,0x0a4d0,0x0d4d4,0x0d250
+];
+
+
+const lunarBase =
+new Date(1900,0,31);
+
+
+
+
+
+function lunarFestival(year){
+
+
+let result=[];
+
+
+let d=new Date(year,0,1);
+
+
+
+while(d.getFullYear()==year){
+
+
+let lunar =
+solarToLunar(d);
+
+
+
+let key =
+`${lunar.month}-${lunar.day}`;
+
+
+
+let data={
+
+
+"1-1":
+[
+"春节",
+"农历新年的开始，人们团聚、祭祖，迎接新的岁月。"
+],
+
+
+"1-15":
+[
+"元宵节",
+"正月十五，人们赏灯猜谜，庆祝新年的延续。"
+],
+
+
+"2-2":
+[
+"龙抬头",
+"春回大地，人们祈求风调雨顺，迎接新的农事周期。"
+],
+
+
+"5-5":
+[
+"端午节",
+"人们食粽、佩香囊，延续古老的夏季节令传统。"
+],
+
+
+"7-7":
+[
+"七夕乞巧",
+"古代女子祈求心灵手巧，也寄托对美好生活的期待。"
+],
+
+
+"7-15":
+[
+"中元节",
+"人们祭祀先人，表达对过去亲人的怀念。"
+],
+
+
+"8-15":
+[
+"中秋节",
+"秋季月圆之时，人们团聚赏月，寄托思念。"
+],
+
+
+"9-9":
+[
+"重阳节",
+"人们登高、敬老，延续秋季传统习俗。"
+],
+
+
+"12-8":
+[
+"腊八节",
+"寒冬时节，人们熬制腊八粥，祈福迎新。"
+],
+
+
+"12-23":
+[
+"小年",
+"岁末准备新年，人们清扫、祭灶，迎接春节。"
+]
+
+};
+
+
+
+if(data[key]){
+
+
+result.push({
+
+title:data[key][0],
+
+date:format(d),
+
+type:"传统节日",
+
+desc:data[key][1]
+
+});
+
+}
+
+
+d.setDate(
+d.getDate()+1
+);
+
+
+}
+
+
+
+return result;
+
+}
+
+
+
+
+
+
+function solarToLunar(date){
+
+
+let offset =
+Math.floor(
+(date-lunarBase)/86400000
+);
+
+
+let year=1900;
+
+
+let days;
+
+
+while(
+year<2100 &&
+offset>0
+){
+
+days=lYearDays(year);
+
+offset-=days;
+
+year++;
+
+}
+
+
+
+if(offset<0){
+
+offset+=days;
+
+year--;
+
+}
+
+
+
+let month=1;
+
+let leap=
+leapMonth(year);
+
+let isLeap=false;
+
+
+let daysInMonth;
+
+
+while(month<=12 && offset>0){
+
+
+if(
+leap>0 &&
+month==leap+1 &&
+!isLeap
+){
+
+month--;
+
+isLeap=true;
+
+daysInMonth=
+leapDays(year);
+
+}
+
+else{
+
+daysInMonth=
+monthDays(year,month);
+
+}
+
+
+offset-=daysInMonth;
+
+
+
+if(
+isLeap &&
+month==leap+1
+){
+
+isLeap=false;
+
+}
+
+
+month++;
+
+}
+
+
+
+return {
+
+year,
+
+month,
+
+day:offset+1
+
+};
+
+
+}
+
+
+
+
+
+function lYearDays(y){
+
+let sum=348;
+
+
+let info =
+lunarInfo[y-1900];
+
+
+
+for(
+let i=0x800;
+i>0x8;
+i>>=1
+){
+
+if(info&i)
+sum++;
+
+}
+
+
+return sum;
+
+}
+
+
+
+
+
+function leapMonth(y){
+
+return lunarInfo[y-1900]&0xf;
+
+}
+
+
+
+
+
+function leapDays(y){
+
+if(leapMonth(y)){
+
+return
+(
+lunarInfo[y-1900]&0x10000
+)
+?
+30
+:
+29;
+
+}
+
+return 0;
+
+}
+
+
+
+
+
+function monthDays(y,m){
+
+return
+(
+lunarInfo[y-1900]
+&
+(0x10000>>m)
+)
+?
+30
+:
+29;
+
+}
