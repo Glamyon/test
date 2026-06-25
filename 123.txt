@@ -1,208 +1,104 @@
 export default {
-async fetch(request){
+async fetch(){
 
-const url = new URL(request.url);
-const year = Number(url.searchParams.get("year")) || new Date().getFullYear();
+const year = new Date().getFullYear();
+const NL = "\r\n";
 
-let events = [];
+let events = [
 
+["春节", year+"0217","传统节日","农历新年的开始，人们团聚、祭祖。"],
+["元宵节", year+"0303","传统节日","正月十五赏灯猜谜。"],
+["清明祭祖", year+"0405","民间习俗","扫墓祭祖，追思先人。"],
+["端午节", year+"0605","传统节日","食粽、佩香囊，延续古老习俗。"],
+["七夕乞巧", year+"0807","民间习俗","祈求心灵手巧，寄托美好愿望。"],
+["中秋节", year+"0925","传统节日","团聚赏月，寄托思念。"],
+["重阳节", year+"1030","传统节日","登高敬老。"],
+["腊八节", year+"0107","传统节日","熬腊八粥，迎接新年。"],
 
-// =============================
-// 统一事件工厂
-// =============================
+["平安夜",year+"1224","世界节日","冬夜团聚与祝福传统。"],
+["圣诞节",year+"1225","世界节日","世界范围节日。"],
+["万圣节",year+"1031","世界节日","秋季民俗活动。"],
 
-function E(date, title, type, desc){
-return {date, title, type, desc};
-}
+["陈胜吴广起义",year+"0721","民众历史记忆","秦末普通士卒因徭役压力选择反抗。"],
+["黄巾起义",year+"0201","民众历史记忆","东汉末年许多人因生活困境参与社会运动。"],
+["黄巢起义",year+"0901","民众历史记忆","唐末社会变化影响大量普通人。"],
+["焚书坑儒",year+"0101","文化记忆","秦代文化政策事件。"],
 
-
-
-// =============================
-// 世界节日（固定）
-// =============================
-
-const world = [
-["平安夜","1224"],
-["圣诞节","1225"],
-["万圣节","1031"]
 ];
 
-for(const w of world){
-events.push(E(year+w[1], w[0], "世界节日", ""));
-}
-
-events.push(E(thanksgiving(year),"感恩节","世界节日","家庭聚会与感恩传统"));
-
-
-
-// =============================
-// 节气（工业标准近似算法）
-// =============================
-
-events.push(...solarTerms(year));
-
-
-
-// =============================
-// 农历（稳定对照表，不计算）
-// =============================
-
-events.push(...lunarTable(year));
-
-
-
-// =============================
-// 历史记忆（固定日）
-// =============================
-
-const history = [
-["陈胜吴广起义","0721"],
-["黄巾起义","0201"],
-["黄巢起义","0901"],
-["焚书坑儒","0101"]
-];
-
-for(const h of history){
-events.push(E(year+h[1], h[0], "历史记忆",""));
-}
-
-
-
-// =============================
-// ICS 输出
-// =============================
 
 let ics =
-`BEGIN:VCALENDAR
-VERSION:2.0
-CALSCALE:GREGORIAN
-METHOD:PUBLISH
-X-WR-CALNAME:文化日历
-X-WR-TIMEZONE:Asia/Shanghai
-`;
+"BEGIN:VCALENDAR"+NL+
+"VERSION:2.0"+NL+
+"CALSCALE:GREGORIAN"+NL+
+"METHOD:PUBLISH"+NL+
+"X-WR-CALNAME:华夏文化日历"+NL+
+"X-WR-TIMEZONE:Asia/Shanghai"+NL;
 
-for(const e of events){
 
-ics += `
-BEGIN:VEVENT
-UID:${e.title}-${e.date}@cal
-DTSTART;VALUE=DATE:${e.date}
-DTEND;VALUE=DATE:${nextDay(e.date)}
-SUMMARY:${e.title}
-DESCRIPTION:${escape(e.desc)}
-CATEGORIES:${e.type}
-TRANSP:TRANSPARENT
-END:VEVENT
-`;
+
+for(let e of events){
+
+ics +=
+"BEGIN:VEVENT"+NL+
+"UID:"+encodeURIComponent(e[0])+"@calendar"+NL+
+"DTSTART;VALUE=DATE:"+e[1]+NL+
+"DTEND;VALUE=DATE:"+nextDay(e[1])+NL+
+"SUMMARY:"+icsEscape(e[0])+NL+
+"DESCRIPTION:"+icsEscape(e[3])+NL+
+"CATEGORIES:"+icsEscape(e[2])+NL+
+"TRANSP:TRANSPARENT"+NL+
+"END:VEVENT"+NL;
+
 }
 
-ics += `END:VCALENDAR`;
 
-return new Response(ics,{
+ics += "END:VCALENDAR";
+
+
+
+return new Response(
+ics,
+{
 headers:{
-"Content-Type":"text/calendar;charset=utf-8",
-"Cache-Control":"public,max-age=86400"
+"Content-Type":"text/calendar; charset=utf-8",
+"Content-Disposition":"inline; filename=culture.ics"
 }
-});
+}
+);
+
 
 }
 };
 
 
-
-// =============================
-// 工具
-// =============================
 
 function nextDay(date){
-let d = new Date(Date.UTC(
-+date.slice(0,4),
-+date.slice(4,6)-1,
-+date.slice(6,8)
-));
+
+let d=new Date(
+Date.UTC(
+Number(date.slice(0,4)),
+Number(date.slice(4,6))-1,
+Number(date.slice(6,8))
+)
+);
+
 d.setUTCDate(d.getUTCDate()+1);
-return format(d);
-}
 
-function format(d){
-return d.getFullYear()
-+ String(d.getMonth()+1).padStart(2,"0")
-+ String(d.getDate()).padStart(2,"0");
-}
+return d.getUTCFullYear()
++String(d.getUTCMonth()+1).padStart(2,"0")
++String(d.getUTCDate()).padStart(2,"0");
 
-function escape(s=""){
-return s.replace(/,/g,"\\,").replace(/;/g,"\\;");
 }
 
 
 
-// =============================
-// 感恩节（稳定）
-// =============================
+function icsEscape(str){
 
-function thanksgiving(y){
-let d = new Date(y,10,1);
-let c = 0;
-while(true){
-if(d.getDay()==4){
-c++;
-if(c==4) break;
-}
-d.setDate(d.getDate()+1);
-}
-return format(d);
-}
+return String(str)
+.replace(/\\/g,"\\\\")
+.replace(/,/g,"\\,")
+.replace(/;/g,"\\;")
+.replace(/\n/g,"\\n");
 
-
-
-// =============================
-// 节气（工业近似标准）
-// =============================
-
-const terms=[
-"小寒","大寒","立春","雨水","惊蛰","春分",
-"清明","谷雨","立夏","小满","芒种","夏至",
-"小暑","大暑","立秋","处暑","白露","秋分",
-"寒露","霜降","立冬","小雪","大雪","冬至"
-];
-
-const base = Date.UTC(1900,0,6,2,5);
-const msYear = 31556925974.7;
-
-function solarTerms(y){
-let r=[];
-for(let i=0;i<24;i++){
-let d = new Date(base + msYear*(y-1900) + i*15*24*3600*1000);
-r.push(E(format(d), terms[i], "节气", ""));
-}
-return r;
-}
-
-
-
-// =============================
-// 农历（对照表版本：稳定版核心）
-// =============================
-
-function lunarTable(y){
-
-const map = {
-
-"春节":"0210",
-"元宵":"0225",
-"端午":"0605",
-"七夕":"0807",
-"中秋":"0915",
-"重阳":"1009",
-"腊八":"0108"
-
-};
-
-let r=[];
-
-for(const k in map){
-r.push(E(y+map[k], k, "农历节日",""));
-}
-
-return r;
 }
